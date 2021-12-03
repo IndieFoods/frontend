@@ -28,6 +28,50 @@ export const data = {
       "BowlShadow",
     ],
   },
+  chefHomePage: {
+    highlights: [
+      "total subscriptions",
+      "total earnings",
+      "last month earnings",
+    ],
+  },
+  foodSubDetails: {
+    foodCategories: ["breakfast", "lunch", "snacks", "dinner"],
+    inputRequired: [
+      {
+        label: "Number of people :",
+        input: {
+          type: "number",
+          name: "people",
+          id: "number-of-people",
+        },
+      },
+      {
+        label: "Duration( in days ) :",
+        input: {
+          type: "number",
+          name: "days",
+          id: "number-of-days",
+        },
+      },
+    ],
+    Checkboxes: [
+      "Breakfast ( 50 ₹/ person )",
+      "Lunch ( 100 ₹/ person )",
+      "Snacks ( 50 ₹/ person )",
+      "Dinner ( 100 ₹/ person )",
+    ],
+    addressTempData: [
+      "Shop No 48, Heera Panna Shopping Centre, Haji Ali, Cumballa Hill, Mumbai, Maharashtra - 400026",
+      "Shop No 49, Heera Panna Shopping Centre, Haji Ali, Cumballa Hill, Mumbai, Maharashtra - 400026",
+    ],
+    summary: [
+      { type: "breakfast", value: "₹5000" },
+      { type: "lunch", value: "₹5000" },
+      { type: "snacks", value: "₹5000" },
+      { type: "dinner", value: "₹5000" },
+    ],
+  },
 };
 export const signUpData = {
   title: "Sign Up",
