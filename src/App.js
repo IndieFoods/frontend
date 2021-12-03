@@ -1,19 +1,15 @@
 import React from "react";
 
 import { Switch, Route } from "react-router-dom";
-
-import Home from "./Containers/Home";
+import LandingPage from "./Containers/LandingPage";
 
 const App = () => {
-  
-    return (
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
-    )
-  
+  return (
+    <Switch>
+      <Route exact path="/" component={LandingPage} />
+      <Route path={["/signin", "/signup"]} component={LandingPage} />
+    </Switch>
+  );
 };
 
 export default App;

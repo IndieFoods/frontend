@@ -1,0 +1,156 @@
+.Wrapper {
+  position: relative;
+  width: 100%;
+  height: 95.8rem;
+  background-color: var(--light-yellow);
+  overflow: hidden;
+  max-width: 1536px;
+  margin: 0 auto;
+}
+.WrapperImages {
+  position: absolute;
+  object-fit: contain;
+  pointer-events: none;
+}
+.BgOrange {
+  width: 100vw;
+  max-width: 153.6rem;
+  bottom: max(-9.8vw, -15rem);
+  left: 0;
+  z-index: 0;
+}
+.RightBgDesigns {
+  width: 73vw;
+  max-width: 112.1rem;
+  right: 0;
+  bottom: min(2vw, 3rem);
+}
+.ExtraElem {
+  transform: rotate(-45deg);
+  width: 8vw;
+  left: min(49.6vw, 76.1rem);
+  top: max(-3.1vw, -4.7rem);
+  max-width: 12.3rem;
+}
+.LeftBgDesigns {
+  width: 30vw;
+  top: 0;
+  left: 0;
+  max-width: 46rem;
+}
+.PrimaryElems {
+  width: 48vw;
+  bottom: min(19.2vw, 29.5rem);
+  right: min(4.5vw, 6.9rem);
+  z-index: 2;
+  max-width: 73.7rem;
+}
+.BowlShadow {
+  width: 14%;
+  bottom: min(35vw, 53.7rem);
+  left: min(55vw, 84.5rem);
+  mix-blend-mode: multiply;
+  background-blend-mode: multiply;
+  z-index: 1;
+}
+.Logo {
+  object-fit: contain;
+  width: 16rem;
+  margin: 2.6rem 0 0 5.2rem;
+}
+.ContentWrapper {
+  margin: 14.1rem 0 0 8rem;
+  position: relative;
+  z-index: 2;
+}
+.Heading {
+  font-size: var(--font-42);
+  width: 62rem;
+}
+.ButtonWrapper {
+  width: 26rem;
+  display: flex;
+  margin-top: 4.7rem;
+}
+@media only screen and (max-width: 1080px) {
+  .Wrapper {
+    height: 80rem;
+  }
+  .Heading {
+    font-size: var(--font-36);
+  }
+  .ButtonWrapper {
+    margin-top: 3rem;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .Wrapper {
+    height: 60rem;
+  }
+  .ContentWrapper {
+    margin: 8rem 0 0 4rem;
+  }
+  .Heading {
+    font-size: var(--font-30);
+    width: 80%;
+  }
+  .Logo {
+    margin-left: 4rem;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .Wrapper {
+    height: 70rem;
+  }
+  .ContentWrapper {
+    margin: 8rem 0 0 0rem;
+  }
+  .Heading {
+    font-size: var(--font-26);
+    margin: auto;
+    text-align: center;
+    width: 90%;
+  }
+  .Logo {
+    margin-left: 5%;
+  }
+  .ButtonWrapper {
+    flex-direction: column;
+    margin: auto;
+    margin-top: 3.5rem;
+    width: 13rem;
+  }
+  .PrimaryElems {
+    width: 60%;
+    left: 20%;
+  }
+  .BowlShadow {
+    bottom: 42vw;
+    left: 30%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .Wrapper {
+    height: 62rem;
+  }
+}
+@media only screen and (max-width: 385px) {
+  .Wrapper {
+    height: 68rem;
+  }
+  .Heading {
+    text-align: left;
+    width: 85%;
+  }
+  .PrimaryElems {
+    width: 70%;
+    left: 15%;
+  }
+  .Logo {
+    margin-left: 7.5%;
+  }
+  .BowlShadow {
+    bottom: 46vw;
+    left: 28%;
+  }
+}
