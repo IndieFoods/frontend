@@ -1,0 +1,43 @@
+.Wrapper {
+  display: flex;
+  font-size: var(--font-14);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.Label {
+  display: block;
+}
+
+.Input {
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  border-radius: none;
+  padding: 0;
+  margin: 0;
+  resize: none;
+  font-family: "Manrope", sans-serif;
+  color: var(--black);
+  font-weight: 500;
+  font-size: var(--font-14);
+  width: 100%;
+  display: inline;
+  outline: none;
+  -moz-appearance: textfield;
+  font-weight: 700;
+  padding-left: 0.7rem;
+}
+
+.Input:focus {
+  outline: none;
+}
+
+.Input::-webkit-outer-spin-button,
+.Input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+/* .Input {
+} */
