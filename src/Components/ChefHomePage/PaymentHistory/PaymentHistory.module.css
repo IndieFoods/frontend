@@ -1,0 +1,37 @@
+.PaymentHistoryContainer {
+  margin-left: 4rem;
+}
+.PaymentHistoryTitle {
+  font-size: var(--font-17);
+  font-weight: 700;
+  margin: 3rem 0;
+}
+.PaymentHistoryHeadingContainer {
+  display: grid;
+  grid-template-columns: 30fr 10fr 30fr;
+  width: 51rem;
+  font-size: var(--font-17);
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 1.3rem;
+}
+.PaymentHistoryHeading:nth-child(2) {
+  text-align: center;
+}
+.PaymentHistoryHeading:nth-child(3) {
+  text-align: right;
+}
+@media screen and (max-width: 1150px) {
+  .PaymentHistoryHeadingContainer {
+    width: 100%;
+  }
+  .PaymentHistoryContainer {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .PaymentHistoryHeadingContainer {
+    font-size: var(--fontv-4);
+  }
+}
