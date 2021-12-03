@@ -1,0 +1,23 @@
+.ChefHomeWrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+.ChefHomeRightSec {
+  width: fit-content;
+}
+@media screen and (max-width: 1150px) {
+  .ChefHomeWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ChefHomeRightSec {
+    width: calc(65vw + 11rem);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ChefHomeRightSec {
+    width: 90vw;
+  }
+}
