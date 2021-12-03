@@ -8,6 +8,7 @@ import LandingPage from "./Containers/LandingPage";
 import { getUser } from "./Services/user.service";
 import UserHome from "./Containers/UserHome";
 import ChefHome from "./Containers/ChefHome";
+import ChefProfile from "./Containers/ChefProfile";
 
 const fetchUserData = async (accessToken, dispatch) => {
   dispatch({
@@ -45,6 +46,7 @@ const App = () => {
       <Route path={["/signin", "/signup"]} component={LandingPage} />
       <Route exact path="/userhome" component={UserHome} />
       <Route exact path="/chefhome" component={ChefHome} />
+      <Route exact path="/chefProfile" component={ChefProfile} />
     </Switch>
   );
 };
