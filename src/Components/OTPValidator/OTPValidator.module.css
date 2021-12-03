@@ -1,0 +1,90 @@
+.Wrapper {
+  width: 45rem;
+  height: fit-content;
+  background-color: white;
+  padding: 2.5rem;
+}
+
+.Title {
+  font-size: var(--font-24);
+  font-weight: 700;
+  color: var(--black);
+}
+
+.SubText {
+  font-size: var(--font-16);
+  font-weight: 500;
+  color: var(--ter-black);
+  margin-top: 0.6rem;
+}
+
+.OTPInputContainer {
+  margin-top: 4rem;
+}
+
+.OTPInput {
+  font-size: var(--font-24);
+  font-weight: 600;
+  font-family: "Manrope", sans-serif;
+  color: var(--black);
+  width: 2em !important;
+  height: 2em !important;
+  transition: outline 0.1s ease-out, border 0.1s ease-out,
+    box-shadow 0.1s ease-out, color 0.1s ease-out,
+    background-color 0.2s ease-out, opacity 0.2s ease-out;
+  border: 1px solid var(--ter-black);
+  color: var(--sec-black);
+  border-radius: 0.5rem;
+}
+
+.OTPInputFocus {
+  outline: none !important;
+  border: 2px solid var(--orange-primary);
+  box-shadow: 0 0 0.2rem 0.4rem var(--orange-primary-input-shadow);
+}
+
+.OTPInputDisabled {
+  color: var(--ter-black);
+  opacity: 0.5;
+}
+
+.OTPInputError {
+  border: 2px solid var(--red-input-error);
+}
+.OTPValidatorButton {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-color: var(--orange-primary);
+  border-radius: 0.5rem;
+  height: 4em;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.OTPValidatorButton svg path {
+  fill: white;
+}
+
+.OTPValidatorErrorText {
+  font-size: var(--font-14);
+  font-weight: 400;
+  color: var(--red-input-error-text);
+  margin-top: 1rem;
+  font-family: "Manrope", sans-serif;
+}
+
+.BottomText {
+  font-size: var(--font-16);
+  font-weight: 500;
+  color: var(--ter-black);
+  margin-top: 3.5rem;
+}
+
+.BottomTextLink {
+  color: var(--orange-primary);
+  cursor: pointer;
+}
