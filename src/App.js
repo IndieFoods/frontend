@@ -6,23 +6,23 @@ import { useHistory } from "react-router";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./Containers/LandingPage";
 import { getUser } from "./Services/user.service";
+import UserHome from "./Containers/UserHome";
 
 const fetchUserData = async (accessToken, dispatch) => {
   dispatch({
     type: "UPDATE_ACCESS_TOKEN",
-    details: accessToken
+    details: accessToken,
   });
 
   const userData = await getUser(accessToken);
 
   dispatch({
     type: "UPDATE_USER_DATA",
-    details: userData
+    details: userData,
   });
 };
 
 const App = () => {
-
   const dispatch = useDispatch();
   const history = useHistory();
   const auth = getAuth();
@@ -42,6 +42,8 @@ const App = () => {
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route path={["/signin", "/signup"]} component={LandingPage} />
+
+      <Route exact path="/userhome" component={UserHome} />
     </Switch>
   );
 };
