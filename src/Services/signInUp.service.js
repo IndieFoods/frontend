@@ -1,4 +1,5 @@
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import app from '../firebase';
 
 export const firebaseAuthSendOTP = async (mobile, reCAPTCHA) => {
     try {
