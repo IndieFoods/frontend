@@ -72,6 +72,21 @@ const PinCodeTextMask = React.forwardRef(function TextMaskCustom(props, ref) {
     />
   );
 });
+const FSSAITextMask = React.forwardRef(function TextMaskCustom(props, ref) {
+  const { onChange, ...other } = props;
+  return (
+    <IMaskInput
+      {...other}
+      mask="#0000000000000"
+      definitions={{
+        "#": /[1-9]/,
+      }}
+      inputRef={ref}
+      onAccept={(value) => onChange({ target: { name: props.name, value } })}
+      overwrite
+    />
+  );
+});
 
 function CustomisedRadio(props) {
   return (
@@ -90,5 +105,50 @@ function CustomisedRadio(props) {
   );
 }
 
+const selectColorStyles = {
+  control: (styles) => ({
+    ...styles,
+    fontSize: "var(--font-16)",
+  }),
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    return {
+      ...styles,
+      fontSize: "var(--font-16)",
+      transition: "background-color 0.1s ease",
+      ":active": {
+        ...styles[":active"],
+        backgroundColor: "var(--orange-tertiary)",
+      },
+      ":hover": {
+        ...styles[":hover"],
+        backgroundColor: "var(--orange-tertiary)",
+      },
+      ":visited": {
+        ...styles[":visited"],
+        backgroundColor: "var(--orange-tertiary)",
+      },
+    };
+  },
+  multiValueLabel: (styles, { data }) => ({
+    ...styles,
+    fontSize: "var(--font-16)",
+  }),
+  multiValueRemove: (styles, { data }) => ({
+    ...styles,
+    transition: "all 0.2s",
+    ":hover": {
+      backgroundColor: "var(--ter-black)",
+      cursor: "pointer",
+      fontSize: "var(--font-16)",
+    },
+  }),
+};
+
 export default StyledInput;
-export { MobileNumberTextMask, PinCodeTextMask, CustomisedRadio };
+export {
+  MobileNumberTextMask,
+  PinCodeTextMask,
+  CustomisedRadio,
+  FSSAITextMask,
+  selectColorStyles as colourStyles,
+};

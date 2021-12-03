@@ -46,6 +46,11 @@
   width: 35rem;
 }
 
+.CuisineWrapper {
+  margin-top: 1.8rem;
+  margin-bottom: 0.2rem;
+}
+
 @media only screen and (min-width: 1600px) {
   .Wrapper {
     padding-right: calc(40vw - 35rem);

@@ -9,10 +9,15 @@ import Styles from "./LandingPage.module.css";
 import { data, images } from "../../Components/StaticData";
 import SignUp from "../../Components/SignInUp/SignUp";
 import SignIn from "./../../Components/SignInUp/SignIn";
+import PopUp from "../../Components/PopUp/PopUp";
+import OTPValidator from "../../Components/OTPValidator";
+import { useSelector } from "react-redux";
 
 function LandingPage() {
   const Location = useLocation();
   const history = useHistory();
+
+  const popUpStatus = useSelector(state => state.authReducer.popUpStatus);
 
   const signInUpWrapperRef = React.useRef(123);
 
@@ -23,8 +28,8 @@ function LandingPage() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key == "Escape") {
-      if (Location.pathname != "/") {
+    if (e.key === "Escape") {
+      if (Location.pathname !== "/") {
         history.push("/");
       }
     }
@@ -48,13 +53,18 @@ function LandingPage() {
         className={Styles.SignInUpWrapper}
         onClick={handleBgOnClick}
         style={{
-          background: Location.pathname != "/" ? "rgba(0, 0, 0, 0.4)" : "none",
-          pointerEvents: Location.pathname != "/" ? "all" : "none",
+          background: Location.pathname !== "/" ? "rgba(0, 0, 0, 0.4)" : "none",
+          pointerEvents: Location.pathname !== "/" ? "all" : "none",
         }}
       >
         <SignUp />
         <SignIn />
       </div>
+      <PopUp
+        ContentComp={<OTPValidator />}
+        isOpen={popUpStatus.isOpen}
+        isClosable={false}
+      />
     </>
   );
 }

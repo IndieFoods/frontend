@@ -4,7 +4,7 @@ import Styles from "./SignInUp.module.css";
 
 import StyledMUIInput from "./Helpers/StyledMUIInput";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import { MobileNumberTextMask } from "./Helpers/StyledMUIInput";
 
@@ -12,6 +12,8 @@ import Button from "../Button";
 import BottomText from "./Helpers/BottomText";
 
 import { signInData } from "../StaticData";
+import { firebaseAuthConfirmOTP, firebaseAuthSendOTP } from "../../Services/signInUp.service";
+import { useDispatch, useSelector } from "react-redux";
 
 function SignIn() {
   const location = useLocation();
@@ -21,12 +23,53 @@ function SignIn() {
     numberformat: "",
   });
 
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const handleChange = (event) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value,
     });
   };
+
+  const handleSignIn = async (otp, confirmationResult) => {
+    const userData = await firebaseAuthConfirmOTP(otp, confirmationResult);
+    if (userData.accessToken) {
+      dispatch({
+        type: "UPDATE_ACCESS_TOKEN",
+        details: userData.accessToken,
+      });
+      // history.push("/userhome");
+    }
+  };
+
+  async function SignIn(e) {
+    e.preventDefault();
+    const mobile = e.target.elements.Mobile.value;
+
+    if (mobile.length === 10) {
+      const confirmationResultRes = await firebaseAuthSendOTP(mobile, true);
+
+      dispatch({
+        type: "UPDATE_AUTH_DATA",
+        details: {
+          confirmationResult: confirmationResultRes,
+        }
+      });
+
+      if (confirmationResultRes) {
+        dispatch({
+          type: "UPDATE_POPUPSTATUS",
+          details: {
+            isOpen: true,
+            verifyFun: handleSignIn,
+            mobile
+          },
+        });
+      }
+    }
+  }
 
   return (
     <div
@@ -55,7 +98,6 @@ function SignIn() {
             margin="dense"
             autoComplete="username"
           />
-
           <Button
             content="Continue"
             mainColor="var(--orange-primary)"

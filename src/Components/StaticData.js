@@ -62,3 +62,26 @@ export const signInData = {
     },
   },
 };
+
+export const cuisinesOptions = [
+  { value: "North Indian", label: "North Indian" },
+  { value: "South Indian", label: "South Indian" },
+  { value: "Chinese", label: "Chinese" },
+  { value: "Italian", label: "Italian" },
+  { value: "Mexican", label: "Mexican" },
+  { value: "Continental", label: "Continental" },
+  { value: "Fast Food", label: "Fast Food" },
+  { value: "Bakery", label: "Bakery" },
+  { value: "Cafe", label: "Cafe" },
+  { value: "Dessert", label: "Dessert" },
+];
+
+export const OTPValidatorData = {
+  title: "Enter OTP",
+  subTitle: "OTP sent Successfully to ",
+  ErrorText: "The OTP entered is invalid/incorrect. Please try again.",
+  bottomContent: {
+    message: "Didn't receive OTP? ",
+    highlightText: "Resend Now",
+  },
+};
