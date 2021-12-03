@@ -14,7 +14,7 @@ import {
   PinCodeTextMask,
   FSSAITextMask,
   CustomisedRadio,
-  colourStyles
+  colourStyles,
 } from "./Helpers/StyledMUIInput";
 
 import Button from "../Button";
@@ -72,7 +72,10 @@ function SignUp() {
       alert("Please enter valid pin code");
       return false;
     }
-    if (formRef.current.elements.UserType.value === 'Chef' && formRef.current.elements.FSSAI.value.length !== 14) {
+    if (
+      formRef.current.elements.UserType.value === "Chef" &&
+      formRef.current.elements.FSSAI.value.length !== 14
+    ) {
       alert("Please enter valid FSSAI number");
       return false;
     }
@@ -87,8 +90,12 @@ function SignUp() {
     const pincode = formRef.current.elements.Pincode.value;
     const email = formRef.current.elements.Email.value;
     const userType = formRef.current.elements.UserType.value;
-    const fssaiID = formRef.current.elements.FSSAI.value;
-    const cuisine = values.cuisine;
+    let cuisine;
+    let fssaiID;
+    if (userType === "Chef") {
+      fssaiID = formRef.current.elements.FSSAI.value;
+      cuisine = values.cuisine;
+    }
     const address = [
       {
         address: tempAddress,
@@ -105,7 +112,15 @@ function SignUp() {
         if (userType === "User") {
           await signupUser(name, mobile, address, email, userData.accessToken);
         } else {
-          await signupChef(name, mobile, address, email, fssaiID, cuisine, userData.accessToken);
+          await signupChef(
+            name,
+            mobile,
+            address,
+            email,
+            fssaiID,
+            cuisine,
+            userData.accessToken
+          );
         }
         // history.push("/userhome");
       } catch (err) {
