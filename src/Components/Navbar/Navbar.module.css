@@ -1,0 +1,100 @@
+.Wrapper {
+  width: 100%;
+  background-color: var(--white);
+  padding: 1.8rem 0rem;
+  box-shadow: 0rem 0.4rem 1.8rem rgba(0, 0, 0, 0.1);
+  position: sticky;
+  z-index: 15;
+  top: 0;
+}
+.SubWrapper {
+  width: 100%;
+  max-width: 126rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.LeftWrapper {
+  display: flex;
+  align-items: center;
+}
+.Logo {
+  width: 15rem;
+  margin-right: 3rem;
+}
+.PincodeWrapper,
+.PincodeWrapperMobile {
+  display: flex;
+  align-items: center;
+}
+.PincodeWrapperMobile {
+  display: none;
+}
+.Location {
+  width: 1.5rem;
+  margin-right: 0.7rem;
+}
+.Pincode,
+.UserName {
+  font-weight: 600;
+  font-size: var(--font-16);
+}
+.RightWrapper {
+  display: flex;
+  align-items: center;
+}
+.ProfilePhoto {
+  margin-right: 2rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 1350px) {
+  .SubWrapper {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 1230px) {
+  .SubWrapper {
+    padding: 0 6rem;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .SubWrapper {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .SubWrapper {
+    border-bottom: 2px solid var(--grey);
+    padding-bottom: 1.8rem;
+  }
+  .PincodeWrapper {
+    display: none;
+  }
+  .PincodeWrapperMobile {
+    display: block;
+    padding: 1.8rem 4rem 0 4rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .Wrapper {
+    padding: 1.2rem 0;
+  }
+  .SubWrapper {
+    padding: 0 2rem 1rem 2rem;
+  }
+  .Logo {
+    width: 10rem;
+  }
+  .ProfilePhoto {
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-right: 1rem;
+  }
+  .PincodeWrapperMobile {
+    padding: 1rem 2rem 0 2rem;
+  }
+}
