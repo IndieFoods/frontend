@@ -131,3 +131,52 @@ export const OTPValidatorData = {
     highlightText: "Resend Now",
   },
 };
+
+export const AboutSecHeadersData = {
+  personalInfo: "Personal Info",
+  addressUser: "Addresses",
+  addressChef: "Address",
+  bankInfo: "Bank Details",
+  pricing: "Pricing (per meal)",
+  cuisine: "Cuisine types",
+
+  bankInputData: {
+    bankName: {
+      label: "Bank Name",
+      placeholder: "Enter Bank Name",
+      inputType: "text",
+    },
+    accountNumber: {
+      label: "Account Number",
+      placeholder: "Enter Account Number",
+      inputType: "number",
+    },
+    ifscCode: {
+      label: "IFSC Code",
+      placeholder: "Enter IFSC Code",
+      inputType: "text",
+    },
+  },
+  pricingInputData: {
+    breakfast: {
+      label: "Breakfast",
+      placeholder: "Enter Price",
+      inputType: "number",
+    },
+    lunch: {
+      label: "Lunch",
+      placeholder: "Enter Price",
+      inputType: "number",
+    },
+    snacks: {
+      label: "Snacks",
+      placeholder: "Enter Price",
+      inputType: "number",
+    },
+    dinner: {
+      label: "Dinner",
+      placeholder: "Enter Price",
+      inputType: "number",
+    },
+  },
+};
