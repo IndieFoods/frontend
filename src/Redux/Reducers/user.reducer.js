@@ -3,18 +3,8 @@ import { UPDATE_ACCESS_TOKEN, UPDATE_USER_DATA } from "../ActionTypes";
 export const userReducer = (
     state = {
         accessToken: null,
-        userData: {
-            id: null,
-            name: null,
-            phone: null,
-            address: [
-                {
-                    address: null,
-                    pincode: null,
-                }
-            ],
-            email: null,
-        }
+        uid: null,
+        userData: {}
     },
     action
 ) => {
@@ -22,7 +12,8 @@ export const userReducer = (
         case UPDATE_ACCESS_TOKEN: {
             return {
                 ...state,
-                accessToken: action.details,
+                accessToken: action.details.accessToken,
+                uid: action.details.uid,
             };
         }
 
