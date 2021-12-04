@@ -2,7 +2,7 @@
   <h1>IndieFoods</h1>
   <p>
     The Frontend Repository for the IndieFoods
-    <a href="https://indie-foods.netlify.app/home">
+    <a href="https://indie-foods.netlify.app">
     IndieFoods Website
   </a>
   <br/>
