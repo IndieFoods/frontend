@@ -1,5 +1,5 @@
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import app from '../firebase';
+import notify from "../Utils/helper/notifyToast";
 
 export const firebaseAuthSendOTP = async (mobile, reCAPTCHA) => {
     try {
@@ -18,13 +18,13 @@ export const firebaseAuthSendOTP = async (mobile, reCAPTCHA) => {
         return confirmationresult;
     } catch (error) {
         if (error.code === 'auth/invalid-phone-number') {
-            alert('Mobile number Invalid, Refresh and try again.');
+            notify('Mobile number Invalid, Refresh and try again.', 'error');
         } else if (error.code === 'auth/too-many-requests') {
-            alert('Too many requests, Try again after some time.');
+            notify('Too many requests, Try again after some time.', 'error');
         } else if (error.code === 'auth/quota-exceeded') {
-            alert('Quota exceeded, Try again after some time.');
+            notify('Quota exceeded, Try again after some time.', 'error');
         } else {
-            alert('Error ocuured!');
+            notify('Error ocuured!', 'error');
             console.log(error);
         }
     }
@@ -36,9 +36,9 @@ export const firebaseAuthConfirmOTP = async (password, confirmationResult) => {
         return result.user;
     } catch (error) {
         if (error.code === 'auth/invalid-verification-code') {
-            alert('OTP Invalid!');
+            notify('OTP Invalid!', 'error');
         } else {
-            alert('error ocuured!');
+            notify('error ocuured!', 'error');
             console.log(error);
         }
     }

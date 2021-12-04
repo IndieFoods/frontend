@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_USER_URL, ADD_ADDRESS_URL } from "../Utils/constants";
+import { GET_USER_URL, UPDATE_ADDRESS_URL } from "../Utils/constants";
 
 export const getUser = async (accessToken) => {
     try {
@@ -20,7 +20,7 @@ export const getUser = async (accessToken) => {
 
 export const addAddress = async (address, accessToken) => {
     try {
-        const { data } = await axios.post(ADD_ADDRESS_URL,
+        const { data } = await axios.put(UPDATE_ADDRESS_URL,
             {
                 address
             },
