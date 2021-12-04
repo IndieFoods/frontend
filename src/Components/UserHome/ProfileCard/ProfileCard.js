@@ -8,9 +8,10 @@ function ProfileCard({
   ChefRating,
   ChefDescription,
   ChefProfilePhoto,
+  onClick
 }) {
   return (
-    <div className={styles.ProfileCardWrapper}>
+    <div className={styles.ProfileCardWrapper} onClick={onClick}>
       <div className={styles.ProfileCard}>
         <img
           src={ChefProfilePhoto}

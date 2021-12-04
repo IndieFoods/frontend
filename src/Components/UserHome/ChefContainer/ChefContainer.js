@@ -1,24 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./ChefContainer.module.css";
 import ProfileCard from "../ProfileCard";
-
-import data from "../../TempData";
+import { getChefs } from "../../../Services/chef.service";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 function ChefContainer() {
-  const [resultsCount, setResultsCount] = useState(25);
+  const history = useHistory();
+  const chefData = useSelector((state) => state.chefReducer.chefData);
+  const [resultsCount, setResultsCount] = useState();
 
-  const chefList = data.userhome.chef.map((chef, index) => {
+  const chefList = chefData?.map((chef, index) => {
     return (
       <ProfileCard
         key={index}
-        ChefName={chef.ChefName}
-        ChefRating={chef.ChefRating}
-        ChefDescription={chef.ChefDescription}
-        ChefProfilePhoto={chef.ChefProfilePhoto}
+        ChefName={chef.name}
+        ChefRating="4.5"
+        ChefDescription={chef.foodTypes}
+        ChefProfilePhoto={chef.profilePicture}
+        onClick={() => history.push(`./foodsubdetails/${chef.uid}`)}
       />
     );
   });
+
+  useEffect(() => {}, []);
 
   return (
     <div className={styles.Wrapper}>
