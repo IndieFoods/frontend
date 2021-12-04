@@ -3,23 +3,24 @@ import React from "react";
 import styles from "./ChefDetails.module.css";
 
 import { images } from "../../../Components/StaticData";
-import { ReactComponent as VegIcon } from "../../../Assets/Home/VegIcon.svg";
+// import { ReactComponent as VegIcon } from "../../../Assets/Home/VegIcon.svg";
 import Button from "../../Button";
+import VegIcon from "./../../VegIcon/index";
 
 function ChefDetails({
   ChefName,
   ChefRating,
   ChefDescription,
   ChefProfilePhoto,
-  ChefCategory,
+  isVeg,
   CostPerPerson,
   setIsPopUpOpen,
 }) {
-  const costPerPersonList = CostPerPerson.map((item, index) => {
+  const costPerPersonList = Object.keys(CostPerPerson).map((item, index) => {
     return (
       <div className={styles.ChefFoodPriceWrapper} key={index}>
-        <p className={styles.ChefFoodTitle}>{item.foodType}</p>
-        <p className={styles.ChefFoodPrice}>{item.cost}</p>
+        <p className={styles.ChefFoodTitle}>{item}</p>
+        <p className={styles.ChefFoodPrice}>{CostPerPerson[item]}</p>
       </div>
     );
   });
@@ -46,8 +47,7 @@ function ChefDetails({
             />
           </div>
           <div className={styles.ChefFoodCategoryWrapper}>
-            <p className={styles.ChefFoodCategory}>{ChefCategory}</p>
-            <VegIcon className={styles.ChefFoodCategoryIcon} />
+            <VegIcon isVeg={isVeg} isDefault />
           </div>
         </div>
       </div>
