@@ -1,6 +1,6 @@
 .Wrapper {
   margin-top: 2.5rem;
-  
+
   height: 22.5rem;
   width: 100%;
   display: flex;
@@ -35,6 +35,10 @@
   font-size: var(--font-17);
   font-weight: 600;
   color: var(--black);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .VegIconWrapper {
@@ -58,6 +62,10 @@
   font-weight: 500;
   color: var(--ter-black);
   margin-top: 0.2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .IncludesSec {
   margin-top: 0.6rem;
@@ -78,4 +86,33 @@
   font-weight: 500;
   color: var(--ter-black);
   margin-left: 0.9rem;
+}
+@media only screen and (max-width: 1000px) {
+  .Image {
+    width: 25rem;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .Image {
+    width: 30rem;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .Image {
+    width: 25rem;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .Image {
+    width: 20rem;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .Image {
+    width: 100%;
+  }
+  .Wrapper {
+    flex-direction: column;
+    height: auto;
+  }
 }
