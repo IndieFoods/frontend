@@ -36,7 +36,7 @@ const App = () => {
         fetchUserData(user.accessToken, dispatch);
       } else {
         console.log("user is signed out");
-        // history.push("/");
+        history.push("/");
       }
     });
   }, []);
