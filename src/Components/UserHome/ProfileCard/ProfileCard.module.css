@@ -37,6 +37,7 @@
 .ProfileDiscription {
   font-size: var(--font-14);
   font-weight: 500;
+  text-transform: capitalize;
 }
 .ProfileRating {
   color: var(--white);
