@@ -7,6 +7,7 @@ import { Switch, Route } from "react-router-dom";
 import LandingPage from "./Containers/LandingPage";
 import { getUser } from "./Services/user.service";
 import UserHome from "./Containers/UserHome";
+import FoodSubDetails from "./Containers/FoodSubDetails";
 import ChefHome from "./Containers/ChefHome";
 import ChefProfile from "./Containers/ChefProfile";
 
@@ -46,6 +47,7 @@ const App = () => {
       <Route path={["/signin", "/signup"]} component={LandingPage} />
       <Route exact path="/userhome" component={UserHome} />
       <Route exact path="/chefhome" component={ChefHome} />
+      <Route exact path="/foodsubdetails" component={FoodSubDetails} />
       <Route exact path="/chefProfile" component={ChefProfile} />
     </Switch>
   );

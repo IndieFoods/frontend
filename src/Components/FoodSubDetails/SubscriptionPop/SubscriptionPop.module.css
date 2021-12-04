@@ -1,0 +1,164 @@
+.Wrapper {
+  width: 58.5rem;
+  margin: 0 auto;
+  background-color: var(--white);
+  padding: 3.5rem 4.5rem 4rem 4.5rem;
+}
+.UpperWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.InputWrapper {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-15);
+}
+.LablePara {
+  font-weight: 500;
+  margin-right: 0.8rem;
+}
+.Input {
+  border: none;
+  border-bottom: 2px solid var(--orange-primary);
+  width: 4rem;
+  outline: none;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  padding: 0 0.8rem;
+  font-size: var(--font-15);
+}
+.CheckBoxWrapperWrapper {
+  margin-top: 3.5rem;
+}
+.CheckboxWrapper {
+  display: flex;
+  align-items: center;
+}
+.CheckboxPara {
+  font-size: var(--font-15);
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+.AddressWrapper,
+.SummaryWrapper {
+  margin-top: 2.2rem;
+}
+.AddressPara,
+.SummaryPara {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: var(--font-16);
+}
+.SummarySubWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  width: 60%;
+}
+.SummarySubPara {
+  font-size: var(--font-15);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.HorizontalLine {
+  margin: 1.3rem 0;
+  width: 60%;
+  background-color: var(--orange-primary);
+  height: 0.2rem;
+  outline: none;
+  border: none;
+}
+.Button {
+  width: 60%;
+  margin-top: 2.6rem;
+  font-weight: 500;
+  background-color: var(--save-green);
+  border-color: var(--save-green);
+  color: var(--white);
+}
+.Button:hover {
+  border-color: var(--green);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media only screen and (max-width: 780px) {
+  .Wrapper {
+    padding: 3rem 4rem;
+    width: 100%;
+    max-width: 58.5rem;
+  }
+  .CheckBoxWrapperWrapper {
+    margin-top: 2rem;
+  }
+  .AddressWrapper,
+  .SummaryWrapper {
+    margin-top: 1.5rem;
+  }
+  .AddressPara,
+  .SummaryPara {
+    margin-bottom: 1rem;
+  }
+  .Button {
+    margin-top: 2rem;
+  }
+}
+@media only screen and (max-width: 680px) {
+  .Wrapper {
+    width: 90vw;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .Wrapper {
+    padding: 2rem 3rem;
+  }
+  .UpperWrapper {
+    flex-direction: column;
+    align-items: initial;
+  }
+  .SummarySubWrapper,
+  .Button,
+  .HorizontalLine {
+    width: 23.5rem;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .InputWrapper,
+  .CheckboxPara,
+  .Input,
+  .SummarySubPara,
+  .Button {
+    font-size: var(--font-14);
+  }
+  .AddressPara,
+  .SummaryPara {
+    font-size: var(--font-15);
+    margin-bottom: 0.8rem;
+  }
+  .AddressWrapper,
+  .SummaryWrapper {
+    margin-top: 1rem;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .Wrapper {
+    padding: 2rem;
+  }
+}
+@media only screen and (max-width: 310px) {
+  .SummarySubWrapper,
+  .Button,
+  .HorizontalLine {
+    width: 21rem;
+  }
+}
