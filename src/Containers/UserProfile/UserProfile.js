@@ -1,0 +1,35 @@
+import React, { useState, useEffect } from "react";
+
+import Styles from "./UserProfile.module.css";
+
+import Navbar from "./../../Components/Navbar/Navbar";
+import About from "./../../Components/About";
+import { useSelector } from "react-redux";
+import UserSubList from "./../../Components/UserSubList";
+
+function UserProfile() {
+  const userData = useSelector((state) => state.userReducer.userData);
+
+  return (
+    <div className={Styles.Wrapper}>
+      <Navbar />
+      <div className={Styles.SubWrapper}>
+        <div className={Styles.SubListWrapper}>
+          <UserSubList
+          // data
+          />
+        </div>
+        <div className={Styles.Line} />
+        <div className={Styles.AboutWraper}>
+          {userData.name ? (
+            <About userData={userData} isChef={false} />
+          ) : (
+            <About isChef={false} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default UserProfile;

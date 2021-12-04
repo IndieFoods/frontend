@@ -9,6 +9,7 @@ import { getUser } from "./Services/user.service";
 import UserHome from "./Containers/UserHome";
 import ChefHome from "./Containers/ChefHome";
 import ChefProfile from "./Containers/ChefProfile";
+import UserProfile from "./Containers/UserProfile";
 
 const fetchUserData = async (accessToken, dispatch) => {
   dispatch({
@@ -35,7 +36,7 @@ const App = () => {
         fetchUserData(user.accessToken, dispatch);
       } else {
         console.log("user is signed out");
-        history.push("/");
+        // history.push("/");
       }
     });
   }, []);
@@ -47,6 +48,7 @@ const App = () => {
       <Route exact path="/userhome" component={UserHome} />
       <Route exact path="/chefhome" component={ChefHome} />
       <Route exact path="/chefProfile" component={ChefProfile} />
+      <Route exact path="/userprofile" component={UserProfile} />
     </Switch>
   );
 };
