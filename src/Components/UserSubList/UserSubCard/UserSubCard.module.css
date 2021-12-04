@@ -1,0 +1,118 @@
+.Wrapper {
+  margin-top: 2.5rem;
+
+  height: 22.5rem;
+  width: 100%;
+  display: flex;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  border: 1px solid var(--ter-black);
+}
+
+.ImageSec {
+  width: fit-content;
+  height: 100%;
+  border-right: 1px solid var(--ter-black);
+  margin: 0;
+  padding: 0;
+}
+.Image {
+  width: 30rem;
+  height: 100%;
+  object-fit: cover;
+}
+.InfoSec {
+  width: 100%;
+  height: 100%;
+  --padding-hor: 1.6rem;
+  --padding-ver: 1.2rem;
+  padding: var(--padding-ver);
+  padding-left: var(--padding-hor);
+  padding-right: var(--padding-hor);
+  position: relative;
+}
+.Name {
+  font-size: var(--font-17);
+  font-weight: 600;
+  color: var(--black);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.VegIconWrapper {
+  position: absolute;
+  bottom: var(--padding-ver);
+  right: var(--padding-hor);
+}
+
+.AddressSec {
+  width: 100%;
+  height: fit-content;
+  margin-top: 0.5rem;
+}
+
+.Title {
+  font-size: var(--font-14);
+  color: var(--sec-black);
+}
+.Address {
+  font-size: var(--font-12);
+  font-weight: 500;
+  color: var(--ter-black);
+  margin-top: 0.2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.IncludesSec {
+  margin-top: 0.6rem;
+}
+.IncludesTitle {
+  margin-bottom: 0.5rem;
+}
+
+.Includes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 0.15rem;
+}
+.IncludeName {
+  font-size: var(--font-12);
+  font-weight: 500;
+  color: var(--ter-black);
+  margin-left: 0.9rem;
+}
+@media only screen and (max-width: 1000px) {
+  .Image {
+    width: 25rem;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .Image {
+    width: 30rem;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .Image {
+    width: 25rem;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .Image {
+    width: 20rem;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .Image {
+    width: 100%;
+  }
+  .Wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+}

@@ -1,0 +1,73 @@
+.ProfileCard {
+  border-radius: 0.4rem;
+  cursor: pointer;
+  max-width: 31.2rem;
+  width: 100%;
+  height: 28.8rem;
+  transition: all 0.3s ease-out, transform 0.1s ease-out;
+  border: 1px solid var(--white);
+  padding: 1.2rem;
+}
+.ProfilePhoto {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  margin-bottom: 0.9rem;
+  border-radius: 0.4rem;
+}
+.ProfileCardContentWrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 2.2rem;
+}
+.ProfileCardRatingWrapper {
+  background-color: var(--green);
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.8rem;
+  height: 2rem;
+  padding-left: 0.5rem;
+}
+.ProfileName {
+  font-size: var(--font-17);
+  margin-top: -0.2rem;
+}
+.ProfileDiscription {
+  font-size: var(--font-14);
+  font-weight: 500;
+}
+.ProfileRating {
+  color: var(--white);
+  font-size: var(--font-12);
+  font-weight: 700;
+}
+.ProfileRatingStar {
+  height: 55%;
+  width: 55%;
+}
+@media only screen and (min-width: 426px) {
+  .ProfileCard:hover {
+    background: var(--white);
+    box-shadow: 0px 4px 35px var(--black-opa-07);
+    border: 1px solid var(--light-grey);
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .ProfileCard:active {
+    transform: scale(0.97);
+    opacity: 0.8;
+  }
+  .ProfileCardWrapper {
+    width: 31.2rem;
+    border-bottom: var(--grey) solid 1px;
+  }
+}
+@media only screen and (max-width: 370px) {
+  .ProfileCard {
+    padding: 0;
+    padding-bottom: 1rem;
+  }
+}

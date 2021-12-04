@@ -1,0 +1,36 @@
+.ChefHomePageHighlightIndividualContainer {
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.ChefHomePageHighlightIndividualTitle {
+  font-size: var(--font-18);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: capitalize;
+}
+.ChefHomePageHighlightIndividualNumber {
+  font-size: var(--font-22);
+  color: var(--white);
+}
+
+@media screen and (max-width: 1150px) {
+  .ChefHomePageHighlightIndividualContainer {
+    height: 100%;
+  }
+  .ChefHomePageHighlightIndividualNumber {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ChefHomePageHighlightIndividualTitle {
+    font-size: var(--fontv-35);
+  }
+  .ChefHomePageHighlightIndividualNumber {
+    font-size: var(--fontv-4);
+  }
+}

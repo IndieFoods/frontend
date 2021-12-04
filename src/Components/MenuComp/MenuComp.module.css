@@ -1,0 +1,113 @@
+.Wrapper {
+  display: flex;
+  padding-top: 5rem;
+}
+
+.MenuFoodItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.UpperSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Title {
+  font-weight: 700;
+  font-size: var(--font-17);
+}
+
+.EditSaveButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: var(--font-14);
+  font-weight: 600;
+}
+
+.EditSaveButton {
+  padding: 0.55rem 2rem;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.EditSaveIcon {
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-left: 0.5rem;
+}
+
+.EditButton {
+  border-color: var(--orange-primary);
+  color: var(--orange-primary);
+}
+.DiscardButton {
+  cursor: pointer;
+}
+.SaveButton {
+  border-color: var(--ter-black);
+  color: var(--ter-black);
+  margin-left: 1.5rem;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+.SaveButton svg path {
+  fill: var(--ter-black);
+  transition: fill 0.15s ease-out;
+}
+
+.SaveButtonWithChanges {
+  border-color: var(--save-green);
+  color: var(--save-green);
+}
+
+.SaveButtonWithChanges svg path {
+  fill: var(--save-green);
+}
+.ListWrapper {
+  margin-top: 1.5rem;
+}
+.FoodItemWrapper {
+  margin-top: 1.8rem;
+}
+
+.AddNewItemWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 5rem;
+  padding: 0.5rem;
+  border: 2px solid var(--orange-primary);
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.AddNewItemIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    flex-direction: column;
+  }
+  .Wrapper {
+    padding-top: 3rem;
+  }
+  .MenuFoodItems {
+    margin-top: 0.5rem;
+  }
+  .AddNewItemWrapper {
+    margin-top: 3rem;
+  }
+}

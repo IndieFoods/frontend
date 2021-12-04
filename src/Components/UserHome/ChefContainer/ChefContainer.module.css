@@ -1,0 +1,67 @@
+.Wrapper {
+  width: 100%;
+  max-width: 126rem;
+  margin: 0 auto;
+}
+.ChefCount {
+  margin: 2.8rem 0 2.1rem 0;
+  font-size: var(--font-16);
+  font-weight: 500;
+}
+.ChefCount span {
+  font-weight: 600;
+  margin-right: 0.5ch;
+}
+.ChefList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 0.4rem;
+  row-gap: 2rem;
+}
+@media only screen and (max-width: 1350px) {
+  .Wrapper {
+    padding: 0 4rem;
+  }
+  .ChefList {
+    column-gap: 0rem;
+  }
+}
+@media only screen and (max-width: 1230px) {
+  .Wrapper {
+    padding: 0 10rem;
+  }
+  .ChefList {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .Wrapper {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .ChefList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 710px) {
+  .ChefList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .ChefList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .Wrapper {
+    padding: 0 2rem;
+  }
+}

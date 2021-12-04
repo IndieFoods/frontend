@@ -1,0 +1,165 @@
+.ChefDetailsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 95%;
+  max-width: 126rem;
+  padding-bottom: 2rem;
+  padding-top: 5rem;
+  border-bottom: 1px solid var(--ter-black);
+}
+.ChefDetailsWrapper {
+  display: flex;
+}
+.ChefProfilePhoto {
+  width: 28rem;
+  height: 20rem;
+  object-fit: cover;
+  margin-right: 3.5rem;
+  border-radius: 0.4rem;
+}
+.ChefInformationWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.35rem;
+}
+.ChefInformation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.ChefName {
+  font-size: var(--font-24);
+  margin-right: 1rem;
+}
+.ChefDiscription {
+  font-size: var(--font-15);
+  font-weight: 500;
+  margin-right: 3rem;
+  text-transform: capitalize;
+}
+.ChefRatingWrapper {
+  background-color: var(--green);
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.8rem 0;
+  width: fit-content;
+  padding: 0.3rem 0.5rem;
+}
+.ChefRating {
+  color: var(--white);
+  font-size: var(--font-13);
+  font-weight: 700;
+}
+.ChefRatingStar {
+  height: 1rem;
+  object-fit: contain;
+  padding-left: 0.5rem;
+}
+.ChefFoodCategoryWrapper {
+  display: flex;
+  align-items: center;
+}
+.ChefFoodCategory {
+  font-size: var(--font-15);
+  font-weight: 600;
+  color: var(--red);
+}
+.ChefFoodCategoryIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-left: 0.8rem;
+}
+.ChefPricesWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 14rem;
+  margin-top: 0.35rem;
+}
+.ChefPricesContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.ChefPricesTitle {
+  font-size: var(--font-16);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  text-transform: capitalize;
+}
+.ChefFoodPriceWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+.ChefFoodTitle {
+  font-size: var(--font-15);
+  font-weight: 600;
+  color: var(--ter-black);
+}
+.ChefFoodPrice {
+  font-size: var(--font-14);
+  font-weight: 600;
+}
+.ChefSubscribeButton {
+  margin-top: 1.5rem;
+  padding: 0.5rem !important;
+  font-size: var(--font-16) !important;
+}
+@media only screen and (max-width: 1350px) {
+  .ChefDetailsContainer {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .ChefInformation {
+    flex-direction: column;
+    align-items: unset;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .ChefDetailsContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ChefProfilePhoto {
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
+  .ChefPricesWrapper {
+    margin-top: 2%;
+    width: 100%;
+  }
+  .ChefInformationWrapper {
+    margin-bottom: 0;
+    width: 100%;
+  }
+  .ChefDetailsContainer {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .ChefDetailsWrapper {
+    flex-direction: column;
+  }
+  .ChefProfilePhoto {
+    margin-right: 0;
+    width: 100%;
+    height: auto;
+  }
+  .ChefPricesWrapper {
+    margin-top: 5%;
+    width: 100%;
+  }
+  .ChefDetailsWrapper {
+    align-items: center;
+  }
+  .ChefDiscription {
+    margin-right: 0;
+  }
+}

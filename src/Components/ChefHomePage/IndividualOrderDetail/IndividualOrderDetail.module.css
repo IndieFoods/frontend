@@ -1,0 +1,26 @@
+.OrderDetailsWrapper {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  margin-bottom: 1rem;
+  width: 40rem;
+}
+.OrderUserName {
+  font-size: var(--font-15);
+  font-weight: 600;
+  color: var(--black);
+}
+.OrderNumberOfPerson {
+  font-size: var(--font-15);
+  font-weight: 600;
+  justify-self: end;
+}
+@media screen and (max-width: 1150px) {
+  .OrderDetailsWrapper {
+    width: 65vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .OrderDetailsWrapper {
+    width: 100%;
+  }
+}

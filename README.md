@@ -1,70 +1,63 @@
-# Getting Started
+<div align="center">
+  <h1>IndieFoods</h1>
+  <p>
+    The Frontend Repository for the IndieFoods
+    <a href="https://www.uthaan.org">
+    IndieFoods Website
+  </a>
+  <br/>
+ UI for IndieFoods: https://www.figma.com/file/zw89deUVGBbuh66FI9cXtp/Razorpay-FTX-Hackathon?node-id=0%3A1
+  </p>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Generator Front To Back](https://github.com/GunaShekar02/generator-front-to-back).
+## What is IndieFoods?
 
-## Available Scripts
+IndieFoods is a home-cooked food subscription platform created to empower the indie chefs, the superstars who cook great food at home and want to take it a step higher. Our users will have the choice of multiple meal plans and chefs within their area.
 
-In the project directory, you can run:
+## What's our Motive?
 
-### `yarn start`
+<ul>
+<li>
+The pandemic saw many indie chefs delivering home cooked food to support the sick but most of it happened in the unorganized sector, like whatsapp groups. 
+</li>
+<li>
+After brief research we couldn’t find a good and active platform for home-cooked food subscriptions. There are players like FoodDarzee but they hire professional chefs and the rates are very expensive. There are a couple of home-cooked food delivery companies but they work on a per-order basis and not subscriptions. They too aren’t very active and their websites either crashed or didn’t accept orders. So we believe there is a good market share to be captured in this segment.
+</li>
+<li>
+Another reason why we built IndieFoods is to empower the indie chefs and hence lead to the growth in the individual creator economy, which is all the buzz these days.
+</li>
+<li>
+And finally, we aim to provide healthy home-cooked food at affordable prices.
+</li>
+</ul>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Fork the repository
+2. Clone the repository
 
-### `yarn test`
+```sh
+git clone https://github.com/IndieFoods/frontend.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Open the folder containing the cloned repository
+4. Install the required packages, libraries and dependencies
 
-### `yarn build`
+```sh
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Custom API keys can be set up in a .env file
+6. Run the project locally to access the frontend functionality of the website
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributors
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Guna Shekar Proddaturi](https://github.com/GunaShekar02)
+- [Kunal Jain](https://github.com/kunaljain0212)
+- [Akash Gupta](https://github.com/akashgupta1909)
+- [Harshil Mendpara](https://github.com/HarshilMendpara)
+- [Raj Varsani](https://github.com/RajVarsani)

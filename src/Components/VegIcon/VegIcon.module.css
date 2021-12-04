@@ -1,0 +1,26 @@
+.Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  --veg-icon-size: 1.2rem;
+}
+
+.Icon {
+  width: 1em;
+}
+
+.Icon path {
+  fill: var(--main-color);
+}
+
+.Icon {
+  height: fit-content;
+}
+
+.IconText {
+  color: var(--main-color);
+  /* margin-left: 0.5em; */
+  font-weight: 600;
+  font-size: 1em;
+}

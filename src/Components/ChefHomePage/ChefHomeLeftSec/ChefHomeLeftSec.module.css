@@ -1,0 +1,45 @@
+.ChefHomeLeftSecWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 4rem;
+  padding-top: 3rem;
+  border-right: 1px solid var(--ter-black);
+}
+.ChefHomeLeftSecTitle {
+  font-size: var(--font-17);
+  font-weight: bold;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+.TotalOrderDetails {
+  font-size: var(--font-17);
+  font-weight: 500;
+  padding-bottom: 2rem;
+  color: var(--ter-black);
+}
+.ChefHomeLeftSecContainer {
+  display: flex;
+  padding-top: 3rem;
+}
+@media screen and (max-width: 1150px) {
+  .ChefHomeLeftSecWrapper {
+    border-right: none;
+    padding-right: 0;
+  }
+  .ChefHomeLeftSecTitle {
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .ChefHomeLeftSecContainer {
+    flex-direction: column;
+    padding-bottom: 1rem;
+    width: 90vw;
+    margin-top: 1rem;
+  }
+  .TotalOrderDetails {
+    padding-top: 1rem;
+    font-size: var(--font-16);
+  }
+}
