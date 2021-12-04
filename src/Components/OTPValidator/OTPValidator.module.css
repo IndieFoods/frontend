@@ -88,3 +88,44 @@
   color: var(--orange-primary);
   cursor: pointer;
 }
+@media only screen and (max-width: 600px) {
+  .Wrapper {
+    width: 100%;
+    padding: 2rem;
+  }
+  .Title {
+    font-size: var(--font-20);
+  }
+  .SubText {
+    font-size: var(--font-16);
+  }
+  .OTPInputContainer {
+    margin-top: 3rem;
+  }
+  .BottomText {
+    margin-top: 2.5rem;
+    font-size: var(--font-15);
+  }
+  .OTPInput {
+    font-size: var(--font-20);
+
+    width: 1.7em !important;
+    height: 1.7em !important;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .Wrapper {
+    width: 30rem;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .Wrapper {
+    width: 28rem;
+  }
+}
+@media only screen and (max-width: 310px) {
+  .Wrapper {
+    width: 26rem;
+    padding: 1.5rem;
+  }
+}
