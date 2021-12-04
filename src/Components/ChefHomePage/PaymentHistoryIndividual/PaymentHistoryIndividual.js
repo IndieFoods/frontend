@@ -7,8 +7,8 @@ function PaymentHistoryIndividual({ paymentDetails }) {
     return (
         <div className={styles.PaymentHistoryIndividualWrapper}>
             <p className={styles.PaymentUserName}>{paymentDetails.userName}</p>
-            <p className={styles.PaymentAmount}> {numberWithCommas(paymentDetails.amount)}</p>
-            <p className={styles.PaymentTimestamp}>{paymentDetails.timestamp}</p>
+            <p className={styles.PaymentAmount}> {`₹${numberWithCommas(paymentDetails.totalAmount)}`}</p>
+            <p className={styles.PaymentTimestamp}>{paymentDetails.startDate.toLocaleString()}</p>
         </div>
     )
 }
