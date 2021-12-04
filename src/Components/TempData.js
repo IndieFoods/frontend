@@ -1,3 +1,4 @@
+// Creating Temp data from chef
 const chef = [];
 for (let i = 0; i < 10; i++) {
   chef.push({
@@ -11,10 +12,13 @@ for (let i = 0; i < 10; i++) {
 }
 
 const data = {
+  navbar: {
+    pincode: "123456",
+    name: "Joe Biden",
+  },
   userhome: {
     chef: chef,
   },
-
   orders: {
     highlightData: [100, 500, 1500],
     paymentHistory: [
@@ -310,8 +314,7 @@ const data = {
           "https://img.etimg.com/thumb/msid-74572648,width-640,resizemode-4,imgsize-246114/people-say-no-to-non-veg.jpg",
       },
     ],
-  }
+  },
 };
-
 
 export default data;

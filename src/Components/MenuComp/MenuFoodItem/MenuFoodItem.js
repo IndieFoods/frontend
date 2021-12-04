@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 import Styles from "./MenuFoodItem.module.css";
-import VegIcon from "./../../VegIcon";
+import VegIcon from "./../../VegIcon/index";
 import { uploadFile } from "../../../Services/firebase.service";
 
 function MenuFoodItem({ data, isEditing, onChangeFun, keyIndex }) {

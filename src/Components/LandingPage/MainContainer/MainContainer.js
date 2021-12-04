@@ -40,6 +40,7 @@ function MainContainer({ data, logo }) {
       <img src={logo} alt="logo" className={styles.Logo} />
       <div className={styles.ContentWrapper}>
         <h2 className={styles.Heading}>{data.title}</h2>
+        <h2 className={styles.Heading}>{data.subtitle}</h2>
         <div className={styles.ButtonWrapper}>
           <Button
             content="SignUp"

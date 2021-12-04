@@ -3,22 +3,10 @@ import defaultProfilePhoto from "../Assets/_General/DefaultProfilePhoto.svg";
 import location from "../Assets/Navbar/Location.svg";
 import ratingStar from "../Assets/Home/RatingStar.svg";
 
-export const contactLinks = {
-  Facebook: "https://www.facebook.com/",
-  Linkedin: "https://www.linkedin.com/",
-  Instagram: "https://www.instagram.com/",
-};
-
-export const images = {
-  logo: logo,
-  defaultProfilePhoto: defaultProfilePhoto,
-  location: location,
-  ratingStar: ratingStar,
-};
-
 export const data = {
   landingPage: {
-    title: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+    title: "Home-cooked Food Subscription Platform.",
+    subtitle: "For the home, by the home.",
     assetsImages: [
       "BgOrange",
       "ExtraElem",
@@ -26,13 +14,6 @@ export const data = {
       "PrimaryElems",
       "RightBgDesigns",
       "BowlShadow",
-    ],
-  },
-  chefHomePage: {
-    highlights: [
-      "total subscriptions",
-      "total earnings",
-      "last month earnings",
     ],
   },
   foodSubDetails: {
@@ -47,7 +28,7 @@ export const data = {
         },
       },
       {
-        label: "Duration( in days ) :",
+        label: "Duration( in Weeks ) :",
         input: {
           type: "number",
           name: "days",
@@ -72,7 +53,28 @@ export const data = {
       { type: "dinner", value: "₹5000" },
     ],
   },
+  chefHomePage: {
+    highlights: [
+      "total subscriptions",
+      "total earnings",
+      "last month earnings",
+    ],
+  },
 };
+
+export const images = {
+  logo: logo,
+  defaultProfilePhoto: defaultProfilePhoto,
+  location: location,
+  ratingStar: ratingStar,
+};
+
+export const contactLinks = {
+  Facebook: "https://www.facebook.com/",
+  Linkedin: "https://www.linkedin.com/",
+  Instagram: "https://www.instagram.com/",
+};
+
 export const signUpData = {
   title: "Sign Up",
   bottomContent: {
@@ -90,6 +92,20 @@ export const signUpData = {
     },
   },
 };
+
+export const cuisinesOptions = [
+  { value: "north-indian", label: "North Indian" },
+  { value: "south-indian", label: "South Indian" },
+  { value: "chinese", label: "Chinese" },
+  { value: "bengali", label: "Bengali" },
+  { value: "italian", label: "Italian" },
+  { value: "mughlai", label: "Mughlai" },
+  { value: "biryani", label: "Biryani" },
+  { value: "dessert", label: "Dessert" },
+  { value: "fast-food", label: "Fast Food" },
+  { value: "pizza", label: "Pizza" },
+  { value: "burger", label: "Burger" },
+];
 
 export const signInData = {
   title: "Sign In",
@@ -109,23 +125,10 @@ export const signInData = {
   },
 };
 
-export const cuisinesOptions = [
-  { value: "North Indian", label: "North Indian" },
-  { value: "South Indian", label: "South Indian" },
-  { value: "Chinese", label: "Chinese" },
-  { value: "Italian", label: "Italian" },
-  { value: "Mexican", label: "Mexican" },
-  { value: "Continental", label: "Continental" },
-  { value: "Fast Food", label: "Fast Food" },
-  { value: "Bakery", label: "Bakery" },
-  { value: "Cafe", label: "Cafe" },
-  { value: "Dessert", label: "Dessert" },
-];
-
 export const OTPValidatorData = {
   title: "Enter OTP",
   subTitle: "OTP sent Successfully to ",
-  ErrorText: "The OTP entered is invalid/incorrect. Please try again.",
+  ErrorText: "The OTP entered is invalid / incorrect. Please try again.",
   bottomContent: {
     message: "Didn't receive OTP? ",
     highlightText: "Resend Now",

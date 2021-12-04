@@ -12,7 +12,10 @@ import Button from "../Button";
 import BottomText from "./Helpers/BottomText";
 
 import { signInData } from "../StaticData";
-import { firebaseAuthConfirmOTP, firebaseAuthSendOTP } from "../../Services/signInUp.service";
+import {
+  firebaseAuthConfirmOTP,
+  firebaseAuthSendOTP,
+} from "../../Services/signInUp.service";
 import { useDispatch, useSelector } from "react-redux";
 
 function SignIn() {
@@ -40,7 +43,7 @@ function SignIn() {
         type: "UPDATE_ACCESS_TOKEN",
         details: userData.accessToken,
       });
-      // history.push("/userhome");
+      history.push("/home");
     }
   };
 
@@ -55,7 +58,7 @@ function SignIn() {
         type: "UPDATE_AUTH_DATA",
         details: {
           confirmationResult: confirmationResultRes,
-        }
+        },
       });
 
       if (confirmationResultRes) {
@@ -64,7 +67,7 @@ function SignIn() {
           details: {
             isOpen: true,
             verifyFun: handleSignIn,
-            mobile
+            mobile,
           },
         });
       }
@@ -98,6 +101,7 @@ function SignIn() {
             margin="dense"
             autoComplete="username"
           />
+
           <Button
             content="Continue"
             mainColor="var(--orange-primary)"

@@ -1,21 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 import styles from "./FoodItem.module.css";
-import { ReactComponent as VegIcon } from "../../../Assets/Home/VegIcon.svg";
+import VegIcon from "./../../VegIcon/index";
 
 function FoodItem({ data }) {
-  const vegIconRef = useRef(123);
-
-  useEffect(() => {
-    let childNodes = vegIconRef.current.childNodes;
-    for (let i = 0; i < childNodes.length; i++) {
-      if (data.type === "veg") {
-        childNodes[i].setAttribute("fill", "var(--pure-green)");
-      } else {
-        childNodes[i].setAttribute("fill", "var(--red)");
-      }
-    }
-  }, [data.type]);
 
   return (
     <div className={styles.FoodItemContainer}>
@@ -24,14 +12,8 @@ function FoodItem({ data }) {
         <p className={styles.FoodItemName}>{data.name}</p>
         <div
           className={styles.FoodItemTypeWrapper}
-          style={
-            data.type === "veg"
-              ? { color: "var(--pure-green)" }
-              : { color: "var(--red)" }
-          }
         >
-          <VegIcon ref={vegIconRef} className={styles.FoodItemTypeIcon} />
-          <p className={styles.FoodItemType}>{data.type}</p>
+          <VegIcon isVeg={data.isVeg} isDefault />
         </div>
       </div>
     </div>

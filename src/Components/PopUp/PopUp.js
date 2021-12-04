@@ -17,25 +17,28 @@ function PopUp({ ContentComp, isOpen, closeFun, isClosable = true }) {
   }
 
   useEffect(() => {
-    if (isOpen) {
-      primaryWrapperRef.current.style.display = "flex";
-      setTimeout(() => {
-        primaryWrapperRef.current.style.opacity = 1;
-        primaryWrapperRef.current.style.pointerEvents = "all";
+    if (primaryWrapperRef.current.style) {
 
-        primaryWrapperRef.current.childNodes[0].style.transform = "scale(1)";
-        primaryWrapperRef.current.childNodes[0].style.opacity = 1;
-      }, 10);
-    } else {
-      primaryWrapperRef.current.style.opacity = 0;
-      primaryWrapperRef.current.childNodes[0].style.transform = "scale(0.7)";
-      primaryWrapperRef.current.childNodes[0].style.opacity = 0.5;
+      if (isOpen) {
+        primaryWrapperRef.current.style.display = "flex";
+        setTimeout(() => {
+          primaryWrapperRef.current.style.opacity = 1;
+          primaryWrapperRef.current.style.pointerEvents = "all";
 
-      clearTimeout(timeOutRef.current);
-      timeOutRef.current = setTimeout(() => {
-        primaryWrapperRef.current.style.display = "none";
-        primaryWrapperRef.current.style.pointerEvents = "none";
-      }, 250);
+          primaryWrapperRef.current.childNodes[0].style.transform = "scale(1)";
+          primaryWrapperRef.current.childNodes[0].style.opacity = 1;
+        }, 10);
+      } else {
+        primaryWrapperRef.current.style.opacity = 0;
+        primaryWrapperRef.current.childNodes[0].style.transform = "scale(0.7)";
+        primaryWrapperRef.current.childNodes[0].style.opacity = 0.5;
+
+        clearTimeout(timeOutRef.current);
+        timeOutRef.current = setTimeout(() => {
+          primaryWrapperRef.current.style.display = "none";
+          primaryWrapperRef.current.style.pointerEvents = "none";
+        }, 250);
+      }
     }
   }, [isOpen]);
   useEffect(() => {

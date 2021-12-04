@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Select from "react-select";
-
+import { getAuth, signOut } from "firebase/auth";
 import Styles from "./About.module.css";
 
 import { ReactComponent as EditIcon } from "../../Assets/Profile/EditIcon.svg";
@@ -16,7 +16,11 @@ import { useSelector } from "react-redux";
 import { cuisuineSelectStyles } from "./helpers/CuisineSelectStyles";
 import makeAnimated from "react-select/animated";
 import { uploadFile } from "../../Services/firebase.service";
-import { updateProfilePicture } from "../../Services/chef.service";
+import {
+  updateProfileData,
+  updateProfilePicture,
+} from "../../Services/chef.service";
+import notify from "../../Utils/helper/notifyToast";
 
 const tempData = {
   phone: "9966445522",
@@ -38,7 +42,7 @@ const tempData = {
     snacks: 50,
     dinner: 300,
   },
-  cuisines: ["north-indian", "south-indian", "chinese"],
+  foodTypes: ["north-indian", "south-indian", "chinese"],
   fssaiId: "12345678901234",
 };
 
@@ -134,23 +138,29 @@ function About({ userData = tempData, isChef = false }) {
     });
   };
 
-  const saveAddressChanges = async () => {
-    if (individualChangeStates.address.hasBeenChanged) {
-      await addAddress(currentUserData.address, accessToken);
-    }
-  };
-
   const saveData = async () => {
     //Save the data
     setOverallStates({ ...overallStates, isInEditMode: false });
-    if (isChef) {
-      // Chef Overall API Call
-      console.log("Overall API call");
-    } else {
-      // User Address API Call
-      console.log("Address API call");
+    try {
+      if (isChef) {
+        // Chef Overall API Call
+        if (overallStates.hasBeenChanged && accessToken) {
+          await updateProfileData(
+            currentUserData.address,
+            currentUserData.foodTypes,
+            currentUserData.pricing,
+            accessToken
+          );
+        }
+      } else {
+        // User Address API Call
+        if (individualChangeStates.address && accessToken) {
+          await addAddress(currentUserData.address, accessToken);
+        }
+      }
+    } catch (err) {
+      notify(err.response.data.errors[0].message, "error");
     }
-    // Refetch Data
   };
 
   const discardChanges = () => {
@@ -165,18 +175,18 @@ function About({ userData = tempData, isChef = false }) {
         if (!accessToken) return;
         profileImageRef.current.src = URL.createObjectURL(file);
         // Upload image to firebase and call on change
-        const downloadURL = await uploadFile(file, 'profile');
+        const downloadURL = await uploadFile(file, "profile");
         // call api
         await updateProfilePicture(downloadURL, accessToken);
       }
     } catch (err) {
-      alert(err.response.data.errors[0].message);
+      notify(err.response.data.errors[0].message, "error");
     }
   };
 
   const handleCuisineSelectChange = (inputValue) => {
     const tempCuisine = inputValue.map((input) => input.value);
-    setCurrentUserData({ ...currentUserData, cuisines: tempCuisine });
+    setCurrentUserData({ ...currentUserData, foodTypes: tempCuisine });
     setCuisineSelectValue(inputValue);
   };
 
@@ -187,29 +197,31 @@ function About({ userData = tempData, isChef = false }) {
           {AboutSecHeadersData.personalInfo}
         </h4>
         <div className={Styles.PersonalInfoContent}>
-          {isChef ? <div className={Styles.PersonalInfoImageWrapper}>
-            <img
-              ref={profileImageRef}
-              src={currentUserData.profilePicture}
-              alt="Profile"
-              className={Styles.PersonalInfoImage}
-            />
-            <div
-              className={Styles.EditImageScrim}
-              onClick={() => {
-                profileImageInputRef.current.click();
-              }}
-            >
-              <EditIcon className={Styles.EditImageIcon} />
+          {isChef ? (
+            <div className={Styles.PersonalInfoImageWrapper}>
+              <img
+                ref={profileImageRef}
+                src={currentUserData.profilePicture}
+                alt="Profile"
+                className={Styles.PersonalInfoImage}
+              />
+              <div
+                className={Styles.EditImageScrim}
+                onClick={() => {
+                  profileImageInputRef.current.click();
+                }}
+              >
+                <EditIcon className={Styles.EditImageIcon} />
+              </div>
+              <input
+                ref={profileImageInputRef}
+                type="file"
+                className={Styles.EditImageInput}
+                accept="image/*"
+                onChange={handleProfileFileChange}
+              />
             </div>
-            <input
-              ref={profileImageInputRef}
-              type="file"
-              className={Styles.EditImageInput}
-              accept="image/*"
-              onChange={handleProfileFileChange}
-            />
-          </div> : null}
+          ) : null}
           <div className={Styles.PersonalInfoMobileAndEmail}>
             <span className={Styles.PersonalInfoContentMobile}>
               {userData.phone}
@@ -380,6 +392,21 @@ function About({ userData = tempData, isChef = false }) {
             </div>
           </div>
         ) : null}
+      </div>
+      <div
+        className={Styles.EditSaveButton + " " + Styles.LogoutButton}
+        onClick={() => {
+          const auth = getAuth();
+          signOut(auth)
+            .then(() => {
+              console.log("signed out");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }}
+      >
+        Logout
       </div>
     </div>
   );

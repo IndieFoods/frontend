@@ -27,6 +27,7 @@ import {
 } from "../../Services/signInUp.service";
 import { useDispatch } from "react-redux";
 import { signupChef, signupUser } from "../../Services/auth.service";
+import notify from "../../Utils/helper/notifyToast";
 
 const animatedComponentsForSelect = makeAnimated();
 
@@ -57,26 +58,26 @@ function SignUp() {
 
   const handleDataValidation = () => {
     if (formRef.current.elements.Name.value === "") {
-      alert("Please enter your name");
+      notify("Please enter your name", "warning");
       return false;
     }
     if (formRef.current.elements.Mobile.value.length !== 10) {
-      alert("Please enter valid mobile number");
+      notify("Please enter valid mobile number", "warning");
       return false;
     }
     if (formRef.current.elements.Address.value === "") {
-      alert("Please enter your address");
+      notify("Please enter your address", "warning");
       return false;
     }
     if (formRef.current.elements.Pincode.value.length !== 6) {
-      alert("Please enter valid pin code");
+      notify("Please enter valid pin code", "warning");
       return false;
     }
     if (
       formRef.current.elements.UserType.value === "Chef" &&
-      formRef.current.elements.FSSAI.value.length !== 14
+      formRef.current.elements.FSSAI.value === ""
     ) {
-      alert("Please enter valid FSSAI number");
+      notify("Please enter your FSSAI number", "warning");
       return false;
     }
     return true;
@@ -122,9 +123,9 @@ function SignUp() {
             userData.accessToken
           );
         }
-        // history.push("/userhome");
+        history.push("/home");
       } catch (err) {
-        alert(err);
+        notify(err.response.data.errors[0].message);
       }
     }
   };

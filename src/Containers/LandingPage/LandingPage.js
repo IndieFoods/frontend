@@ -17,6 +17,7 @@ function LandingPage() {
   const Location = useLocation();
   const history = useHistory();
 
+  const [isPopUpOpen, setIsPopUpOpen] = React.useState(false);
   const popUpStatus = useSelector(state => state.authReducer.popUpStatus);
 
   const signInUpWrapperRef = React.useRef(123);
@@ -28,8 +29,8 @@ function LandingPage() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Escape") {
-      if (Location.pathname !== "/") {
+    if (e.key == "Escape") {
+      if (Location.pathname != "/") {
         history.push("/");
       }
     }
@@ -53,8 +54,8 @@ function LandingPage() {
         className={Styles.SignInUpWrapper}
         onClick={handleBgOnClick}
         style={{
-          background: Location.pathname !== "/" ? "rgba(0, 0, 0, 0.4)" : "none",
-          pointerEvents: Location.pathname !== "/" ? "all" : "none",
+          background: Location.pathname != "/" ? "rgba(0, 0, 0, 0.4)" : "none",
+          pointerEvents: Location.pathname != "/" ? "all" : "none",
         }}
       >
         <SignUp />
@@ -63,6 +64,9 @@ function LandingPage() {
       <PopUp
         ContentComp={<OTPValidator />}
         isOpen={popUpStatus.isOpen}
+        closeFun={() => {
+          setIsPopUpOpen(false);
+        }}
         isClosable={false}
       />
     </>
