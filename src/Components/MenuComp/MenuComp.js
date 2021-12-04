@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./MenuComp.module.css";
 
 import { data } from "../StaticData";
-import NavigationList from "./../NavigationList";
+import NavigationList from "./../NavigationList/index";
 import MenuFoodItem from "./MenuFoodItem/MenuFoodItem";
 
 import { ReactComponent as EditIcon } from "../../Assets/Profile/EditIcon.svg";
@@ -11,6 +11,7 @@ import { ReactComponent as SaveIcon } from "../../Assets/Profile/SaveIcon.svg";
 import { ReactComponent as PlusIcon } from "../../Assets/_General/Plus.svg";
 import { addMenuItem, updateMenuItem } from "../../Services/chef.service";
 import { useSelector } from "react-redux";
+import notify from "../../Utils/helper/notifyToast";
 
 const foodCategories = data.foodSubDetails.foodCategories;
 
@@ -27,7 +28,7 @@ const tempData = Array(15)
     };
   });
 
-function MenuComp({ menuData = tempData }) {
+function MenuComp({ menuData = tempData, refreshDataFun }) {
   const [currentMenuData, setCurrentMenuData] = useState(menuData);
   const updateReqList = useRef([]);
   const newAddReqList = useRef([]);
@@ -95,6 +96,7 @@ function MenuComp({ menuData = tempData }) {
   };
 
   useEffect(() => {
+    console.log(currentMenuData);
     newAddReqList.current = currentMenuData.filter((obj) => {
       return obj.newID !== undefined;
     });
@@ -118,7 +120,6 @@ function MenuComp({ menuData = tempData }) {
             });
         }
 
-        console.log(updateReqData);
         if (updateReqData.length > 0) {
           await updateMenuItem(updateReqData, accessToken);
         }
@@ -129,11 +130,10 @@ function MenuComp({ menuData = tempData }) {
           await addMenuItem(newArray, accessToken);
         }
 
-        console.log(newArray);
-        // Refresh data
+        refreshDataFun();
       }
     } catch (error) {
-      alert(error.response.data.errors[0].message);
+      notify(error.response.data.errors[0].message, "error");
     }
   };
 
