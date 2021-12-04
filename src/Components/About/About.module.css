@@ -216,14 +216,20 @@
   border-radius: 0.2rem;
   cursor: pointer;
 }
-
+.LogoutButton {
+  font-size: var(--font-14);
+  width: fit-content;
+  margin-top: 2rem;
+  font-weight: 600;
+}
 .EditSaveIcon {
   height: 1.8rem;
   width: 1.8rem;
   margin-left: 0.5rem;
 }
 
-.EditButton {
+.EditButton,
+.LogoutButton {
   border-color: var(--orange-primary);
   color: var(--orange-primary);
 }
