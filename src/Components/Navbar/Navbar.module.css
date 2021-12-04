@@ -44,6 +44,7 @@
 .RightWrapper {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .ProfilePhoto {
   margin-right: 1.5rem;
