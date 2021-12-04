@@ -20,8 +20,9 @@
   align-items: center;
 }
 .Logo {
-  width: 15rem;
+  width: 12rem;
   margin-right: 3rem;
+  cursor: pointer;
 }
 .PincodeWrapper,
 .PincodeWrapperMobile {
@@ -32,22 +33,22 @@
   display: none;
 }
 .Location {
-  width: 1.5rem;
+  width: 1.4rem;
   margin-right: 0.7rem;
 }
 .Pincode,
 .UserName {
   font-weight: 600;
-  font-size: var(--font-16);
+  font-size: var(--font-15);
 }
 .RightWrapper {
   display: flex;
   align-items: center;
 }
 .ProfilePhoto {
-  margin-right: 2rem;
-  width: 3.6rem;
-  height: 3.6rem;
+  margin-right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -87,7 +88,7 @@
     padding: 0 2rem 1rem 2rem;
   }
   .Logo {
-    width: 10rem;
+    width: 9rem;
   }
   .ProfilePhoto {
     width: 2.8rem;
