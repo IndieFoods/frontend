@@ -79,17 +79,10 @@ const App = () => {
           component={UserProfile}
           ChefComp={ChefProfile}
         />
+        {userData.isChef && <Redirect to="/home" />}
         <PrivateRoute path="/chef/:cid" component={FoodSubDetails} />
+        {userData.name && <Redirect to="/home" />}
         <Redirect to="/" />
-        {/* <PrivateRoute path="/userprofile" component={UserProfile} />
-        <PrivateRoute path="/foodsubdetails/:cid" component={FoodSubDetails} />
-        <PrivateRoute path="/chefProfile" component={ChefProfile} forChef />
-        <PrivateRoute path="/chefHome" component={ChefHome} forChef /> */}
-        {/* <PrivateRoute path="/userhome" component={UserHome} />
-        <PrivateRoute path="/userprofile" component={UserProfile} />
-        <PrivateRoute path="/foodsubdetails/:cid" component={FoodSubDetails} />
-        <PrivateRoute path="/chefProfile" component={ChefProfile} forChef />
-        <PrivateRoute path="/chefHome" component={ChefHome} forChef /> */}
       </Switch>
     </>
   );

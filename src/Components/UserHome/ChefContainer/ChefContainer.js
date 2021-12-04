@@ -17,9 +17,9 @@ function ChefContainer() {
         key={index}
         ChefName={chef.name}
         ChefRating="4.5"
-        ChefDescription={chef.foodTypes}
+        ChefDescription={chef.foodTypes.join(", ")}
         ChefProfilePhoto={chef.profilePicture}
-        onClick={() => history.push(`./foodsubdetails/${chef.uid}`)}
+        onClick={() => history.push(`./chef/${chef.uid}`)}
       />
     );
   });
