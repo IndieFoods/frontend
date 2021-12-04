@@ -31,6 +31,36 @@ And finally, we aim to provide healthy home-cooked food at affordable prices.
 </li>
 </ul>
 
+## Screenshots
+
+#### Landing Page
+
+![1](https://github.com/IndieFoods/frontend/blob/main/src/Assets/ReadmeAssets/1.png)
+
+#### Signup Page
+
+![2](https://github.com/IndieFoods/frontend/blob/main/src/Assets/ReadmeAssets/2.png)
+
+#### User Home Page
+
+![3](https://github.com/IndieFoods/frontend/blob/main/src/Assets/ReadmeAssets/3.png)
+
+#### User Profile Page
+
+![4](https://github.com/IndieFoods/frontend/blob/main/src/Assets/ReadmeAssets/4.png)
+
+#### Food Details Page
+
+![5](https://github.com/IndieFoods/frontend/blob/main/src/Assets/ReadmeAssets/5.png)
+
+#### Chef Home Page
+
+![6](https://github.com/IndieFoods/frontend/blob/main/src/Assets/ReadmeAssets/6.png)
+
+#### Chef Profile Page
+
+![7](https://github.com/IndieFoods/frontend/blob/main/src/Assets/ReadmeAssets/7.png)
+
 ## Getting Started
 
 1. Fork the repository
@@ -47,7 +77,7 @@ git clone https://github.com/IndieFoods/frontend.git
 npm install
 ```
 
-5. Custom API keys can be set up in a .env file
+5. Custom API keys can be set up in a .env file. We have added an example of env in .env.example file.
 6. Run the project locally to access the frontend functionality of the website
 
 ```sh
