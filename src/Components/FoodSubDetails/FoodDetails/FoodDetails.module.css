@@ -1,0 +1,33 @@
+.FoodDetailsWrapper {
+  width: 100%;
+  max-width: 80rem;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+}
+@media only screen and (max-width: 500px) {
+  .FoodDetailsWrapper {
+    flex-direction: column;
+    padding-bottom: 1rem;
+    width: 90%;
+    margin-top: 1rem;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .FoodCatogeriesWrapper {
+    /* position: sticky;
+    background-color: var(--white);
+    top: 0; */
+  }
+
+  .FoodDetailsWrapper {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .FoodCatogery {
+    font-size: var(--font-16);
+  }
+}
