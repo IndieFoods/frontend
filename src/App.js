@@ -10,6 +10,7 @@ import UserHome from "./Containers/UserHome";
 import FoodSubDetails from "./Containers/FoodSubDetails";
 import ChefHome from "./Containers/ChefHome";
 import ChefProfile from "./Containers/ChefProfile";
+import UserProfile from "./Containers/UserProfile";
 
 const fetchUserData = async (accessToken, dispatch) => {
   dispatch({
@@ -49,6 +50,7 @@ const App = () => {
       <Route exact path="/chefhome" component={ChefHome} />
       <Route exact path="/foodsubdetails" component={FoodSubDetails} />
       <Route exact path="/chefProfile" component={ChefProfile} />
+      <Route exact path="/userprofile" component={UserProfile} />
     </Switch>
   );
 };
