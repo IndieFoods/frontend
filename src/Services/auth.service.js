@@ -33,6 +33,7 @@ export const signupChef = async (name, phone, address, email, fssaiId, cuisine, 
         address,
         email,
         fssaiId,
+        foodTypes: cuisine,
       },
       {
         headers: {
