@@ -10,6 +10,8 @@ import Navbar from "../../Components/Navbar";
 import { images } from "../../Components/StaticData";
 import { useSelector } from "react-redux";
 import { fetchOrders } from "./../../Services/chef.service";
+import Preloader from "../../Components/Preloader/Preloader";
+import notify from "./../../Utils/helper/notifyToast";
 function randomDate(start, end) {
   return new Date(
     start.getTime() + Math.random() * (end.getTime() - start.getTime())
@@ -39,16 +41,15 @@ function ChefHome() {
   const chefData = useSelector((state) => state.userReducer.userData);
   const accessToken = useSelector((state) => state.userReducer.accessToken);
 
-  const [ordersData, setOrdersData] = React.useState();
-  const [highlightData, setHighlightData] = React.useState([0, 0, 0]);
+  const [ordersData, setOrdersData] = React.useState(null);
+  const [highlightData, setHighlightData] = React.useState([null, null, null]);
 
-  const [todaysOrders, setTodaysOrders] = React.useState([]);
+  const [todaysOrders, setTodaysOrders] = React.useState(null);
 
   useEffect(async () => {
     try {
       let data = await fetchOrders(accessToken);
       console.log(data);
-      // set Orders Data
       data = data.map((order) => {
         return {
           ...order,
@@ -57,16 +58,15 @@ function ChefHome() {
       });
       setOrdersData(data);
     } catch (error) {
-      console.log(error);
+      notify(error?.response?.data?.errors[0]?.message, "error");
     }
   }, [chefData]);
 
   useEffect(() => {
     const tmpTodaysOrders = ordersData?.filter(
       (order) =>
-        order.startDate.getDate() === new Date().getDate() &&
-        order.startDate.getMonth() === new Date().getMonth() &&
-        order.startDate.getFullYear() === new Date().getFullYear()
+        order.startDate.getTime() + order.numberOfWeeks * 604800000 >=
+        new Date().getTime()
     );
     setTodaysOrders(tmpTodaysOrders);
 
@@ -87,16 +87,22 @@ function ChefHome() {
   }, [ordersData]);
 
   return (
-    <div>
-      <Navbar images={images} />
-      <div className={styles.ChefHomeWrapper}>
-        <ChefHomeLeftSec ordersData={todaysOrders} />
-        <div className={styles.ChefHomeRightSec}>
-          <ChefHomePageHighlight highlightData={highlightData} />
-          <PaymentHistory paymentData={ordersData} />
-        </div>
-      </div>
-    </div>
+    <>
+      {ordersData && highlightData[0] && todaysOrders ? (
+        <>
+          <Navbar images={images} />
+          <div className={styles.ChefHomeWrapper}>
+            <ChefHomeLeftSec ordersData={todaysOrders} />
+            <div className={styles.ChefHomeRightSec}>
+              <ChefHomePageHighlight highlightData={highlightData} />
+              <PaymentHistory paymentData={ordersData} />
+            </div>
+          </div>
+        </>
+      ) : (
+        <Preloader />
+      )}
+    </>
   );
 }
 

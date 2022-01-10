@@ -1,0 +1,13 @@
+.Wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.Loader {
+  width: 30rem;
+  height: 30rem;
+}

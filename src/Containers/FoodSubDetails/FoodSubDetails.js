@@ -11,46 +11,47 @@ import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { fetchMenuItems } from "../../Services/chef.service";
 import notify from "../../Utils/helper/notifyToast";
+import Preloader from "./../../Components/Preloader/Preloader";
 
 const foodCategories = data.foodSubDetails.foodCategories;
 
-const tempData = {
-  name: "John Doe",
-  phone: "9966445522",
-  email: "abc@xyz.com",
-  address: Array(1).fill({
-    address: `Shop No 48, Heera Panna Shopping Centre, Haji Ali, Cumballa Hill, Mumbai, Maharashtra`,
-    pincode: "400026",
-  }),
-  bankDetails: {
-    bankName: "HDFC Bank",
-    accountNumber: "123456789",
-    ifscCode: "HDFC0001",
-  },
-  image:
-    "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2019_41/3044956/191009-cooking-vegetables-al-1422.jpg",
-  pricing: {
-    breakfast: 100,
-    lunch: 200,
-    snacks: 50,
-    dinner: 300,
-  },
-  foodTypes: ["north-indian", "south-indian", "chinese"],
-  fssaiId: "12345678901234",
-  menu: Array(15)
-    .fill({})
-    .map((_, index) => {
-      return {
-        id: index,
-        name: "Poha 3",
-        isVeg: Math.random() > 0.5,
-        image:
-          "https://img.etimg.com/thumb/msid-74572648,width-640,resizemode-4,imgsize-246114/people-say-no-to-non-veg.jpg",
-        type: foodCategories[Math.floor(Math.random() * foodCategories.length)],
-      };
-    }),
-  ratings: 4.5,
-};
+// const tempData = {
+//   name: "John Doe",
+//   phone: "9966445522",
+//   email: "abc@xyz.com",
+//   address: Array(1).fill({
+//     address: `Shop No 48, Heera Panna Shopping Centre, Haji Ali, Cumballa Hill, Mumbai, Maharashtra`,
+//     pincode: "400026",
+//   }),
+//   bankDetails: {
+//     bankName: "HDFC Bank",
+//     accountNumber: "123456789",
+//     ifscCode: "HDFC0001",
+//   },
+//   image:
+//     "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2019_41/3044956/191009-cooking-vegetables-al-1422.jpg",
+//   pricing: {
+//     breakfast: 100,
+//     lunch: 200,
+//     snacks: 50,
+//     dinner: 300,
+//   },
+//   foodTypes: ["north-indian", "south-indian", "chinese"],
+//   fssaiId: "12345678901234",
+//   menu: Array(15)
+//     .fill({})
+//     .map((_, index) => {
+//       return {
+//         id: index,
+//         name: "Poha 3",
+//         isVeg: Math.random() > 0.5,
+//         image:
+//           "https://img.etimg.com/thumb/msid-74572648,width-640,resizemode-4,imgsize-246114/people-say-no-to-non-veg.jpg",
+//         type: foodCategories[Math.floor(Math.random() * foodCategories.length)],
+//       };
+//     }),
+//   ratings: 4.5,
+// };
 
 function FoodSubDetails() {
   // Fetch Menu Data from backend
@@ -59,9 +60,11 @@ function FoodSubDetails() {
   const allChefDetails = useSelector((state) => state.chefReducer.chefData);
   const cid = useParams().cid;
 
-  const [chefData, setChefData] = useState(tempData);
+  const [chefData, setChefData] = useState(null);
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-  const [menuItems, setMenuItems] = React.useState([]);
+  const [menuItems, setMenuItems] = React.useState(null);
+
+  const [chefVegTag, setChefVegTag] = useState(false);
 
   async function getMenuItems() {
     try {
@@ -76,41 +79,58 @@ function FoodSubDetails() {
   useEffect(() => {
     const tempChefData = allChefDetails.filter((obj) => obj.uid === cid);
     setChefData(tempChefData[0]);
-    console.log(tempChefData);
-    getMenuItems()
+    getMenuItems();
   }, [allChefDetails]);
 
+  useEffect(() => {
+    if (menuItems) {
+      const tempVegTag = menuItems.some((obj) => !obj.isVeg);
+      setChefVegTag(!tempVegTag);
+    }
+  }, [menuItems]);
 
   return (
     <>
-      <div>
-        <Navbar />
-        {chefData?.name ?
-          <ChefDetails
-            ChefName={chefData.name}
-            ChefDescription={chefData.foodTypes.join(", ")}
-            ChefRating='4.5'
-            ChefProfilePhoto={chefData.profilePicture}
-            ChefCategory={chefData.isVeg}
-            CostPerPerson={chefData.pricing}
-            setIsPopUpOpen={setIsPopUpOpen}
-          />
-          : null
-        }
-        <FoodDetails menuData={menuItems ? menuItems : tempData.menu} />
-      </div>
+      {chefData && menuItems ? (
+        <>
+          <div>
+            <Navbar />
+            {chefData?.name ? (
+              <ChefDetails
+                ChefName={chefData.name}
+                ChefDescription={chefData.foodTypes.join(", ")}
+                ChefRating="4.5"
+                ChefProfilePhoto={chefData.profilePicture}
+                ChefCategory={chefVegTag}
+                CostPerPerson={chefData.pricing}
+                setIsPopUpOpen={setIsPopUpOpen}
+              />
+            ) : null}
+            <FoodDetails menuData={menuItems} />
+          </div>
 
-      {chefData?.name ?
-        <PopUp
-          ContentComp={<SubscriptionPop chefData={chefData} />}
-          isOpen={isPopUpOpen}
-          closeFun={() => {
-            setIsPopUpOpen(false);
-          }}
-          isClosable={true}
-        />
-        : null
-      }
+          {chefData?.name ? (
+            <PopUp
+              ContentComp={
+                <SubscriptionPop
+                  chefData={chefData}
+                  isVeg={chefVegTag}
+                  popupCloseFun={() => {
+                    setIsPopUpOpen(false);
+                  }}
+                />
+              }
+              isOpen={isPopUpOpen}
+              closeFun={() => {
+                setIsPopUpOpen(false);
+              }}
+              isClosable={true}
+            />
+          ) : null}
+        </>
+      ) : (
+        <Preloader />
+      )}
     </>
   );
 }

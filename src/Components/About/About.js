@@ -12,7 +12,7 @@ import { AboutSecHeadersData, cuisinesOptions } from "./../StaticData";
 import AddressIndividual from "./AddressIndividual";
 import CustomisedInput from "./CustomisedInput";
 import { addAddress } from "../../Services/user.service";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cuisuineSelectStyles } from "./helpers/CuisineSelectStyles";
 import makeAnimated from "react-select/animated";
 import { uploadFile } from "../../Services/firebase.service";
@@ -21,6 +21,7 @@ import {
   updateProfilePicture,
 } from "../../Services/chef.service";
 import notify from "../../Utils/helper/notifyToast";
+import { useHistory } from "react-router-dom";
 
 const tempData = {
   phone: "9966445522",
@@ -47,6 +48,8 @@ const tempData = {
 };
 
 function About({ userData = tempData, isChef = false }) {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const animatedComponentsForSelect = makeAnimated();
 
   const profileImageInputRef = useRef(12);
@@ -400,6 +403,19 @@ function About({ userData = tempData, isChef = false }) {
           signOut(auth)
             .then(() => {
               console.log("signed out");
+              dispatch({
+                type: "UPDATE_USER_DATA",
+                details: {},
+              });
+              dispatch({
+                type: "UPDATE_CHEF_DATA",
+                details: {},
+              });
+              dispatch({
+                type: "UPDATE_ACCESS_TOKEN",
+                details: { accessToken: null, uid: null },
+              });
+              history.push("/");
             })
             .catch((error) => {
               console.log(error);

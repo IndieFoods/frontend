@@ -28,6 +28,8 @@ import {
 import { useDispatch } from "react-redux";
 import { signupChef, signupUser } from "../../Services/auth.service";
 import notify from "../../Utils/helper/notifyToast";
+import { getUser } from "./../../Services/user.service";
+import { getChefs } from "../../Services/chef.service";
 
 const animatedComponentsForSelect = makeAnimated();
 
@@ -123,11 +125,31 @@ function SignUp() {
             userData.accessToken
           );
         }
+        fetchUserData(userData.accessToken, userData.uid, dispatch);
         history.push("/home");
       } catch (err) {
-        notify(err.response.data.errors[0].message);
+        notify(err?.response?.data?.errors[0]?.message, "error");
       }
     }
+  };
+
+  const fetchUserData = async (accessToken, uid, dispatch) => {
+    dispatch({
+      type: "UPDATE_ACCESS_TOKEN",
+      details: { accessToken, uid },
+    });
+
+    const userData = await getUser(accessToken);
+    const chefDetails = await getChefs();
+
+    dispatch({
+      type: "UPDATE_USER_DATA",
+      details: userData,
+    });
+    dispatch({
+      type: "UPDATE_CHEF_DATA",
+      details: chefDetails,
+    });
   };
 
   async function SignUp(e) {

@@ -8,12 +8,12 @@ import MenuComp from "./../../Components/MenuComp/index";
 import { useSelector } from "react-redux";
 import { fetchMenuItems } from "../../Services/chef.service";
 import notify from "../../Utils/helper/notifyToast";
+import Preloader from "../../Components/Preloader/Preloader";
 
 function ChefProfile() {
-
   const userData = useSelector((state) => state.userReducer.userData);
   const uid = useSelector((state) => state.userReducer.uid);
-  const [menuItems, setMenuItems] = React.useState([]);
+  const [menuItems, setMenuItems] = React.useState(null);
 
   async function getMenuItems() {
     try {
@@ -26,27 +26,34 @@ function ChefProfile() {
   }
 
   useEffect(() => {
-    getMenuItems()
+    getMenuItems();
   }, [uid]);
 
   return (
-    <div className={Styles.Wrapper}>
-      <Navbar />
-      <div className={Styles.SubWrapper}>
-        <div className={Styles.SubListWrapper}>
-          <MenuComp menuData={menuItems} refreshDataFun={getMenuItems} />
-        </div>
-        <div className={Styles.Line} />
-        <div className={Styles.AboutWraper}>
-          {userData.name ? (
-            <About userData={userData} isChef={true} />
-          ) : (
-            <About isChef={true} />
-          )}
-
-        </div>
-      </div>
-    </div>
+    <>
+      {userData.name && menuItems ? (
+        <>
+          <div className={Styles.Wrapper}>
+            <Navbar />
+            <div className={Styles.SubWrapper}>
+              <div className={Styles.SubListWrapper}>
+                <MenuComp menuData={menuItems} refreshDataFun={getMenuItems} />
+              </div>
+              <div className={Styles.Line} />
+              <div className={Styles.AboutWraper}>
+                {userData.name ? (
+                  <About userData={userData} isChef={true} />
+                ) : (
+                  <About isChef={true} />
+                )}
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <Preloader />
+      )}
+    </>
   );
 }
 

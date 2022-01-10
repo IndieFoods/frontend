@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 import styles from "./SubscriptionPop.module.css";
-import { Checkbox } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  RadioGroup,
+  Typography,
+} from "@mui/material";
 import { Select } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import Button from "../../Button";
+import Radio from "@mui/material/Radio";
 
 import { data } from "../../StaticData";
 import { initializeOrder } from "../../../Services/order.service";
@@ -17,7 +23,7 @@ const defaultData = {
   days: 4,
 };
 
-function SubscriptionPop({ chefData }) {
+function SubscriptionPop({ chefData, isVeg, popupCloseFun }) {
   // Fetch user Data from Datalayer
 
   const accessToken = useSelector((state) => state.userReducer.accessToken);
@@ -44,6 +50,7 @@ function SubscriptionPop({ chefData }) {
       dinner: true,
       snacks: true,
     },
+    isVeg: isVeg,
   });
 
   useEffect(() => {
@@ -112,13 +119,18 @@ function SubscriptionPop({ chefData }) {
         values.people,
         values.days,
         values.summaryTotal / values.days,
-        accessToken
+        accessToken,
+        values.isVeg
       );
       const data = await payementService(
         orderDetails,
         values.summaryTotal / values.days,
         accessToken
       );
+
+      if (popupCloseFun) {
+        popupCloseFun();
+      }
     } catch (error) {
       notify("Payment Unsuccessful", "error");
     }
@@ -209,12 +221,30 @@ function SubscriptionPop({ chefData }) {
     );
   });
 
+  function CustomisedRadio(props) {
+    return (
+      <Radio
+        sx={{
+          color: "var(--black)",
+          "&.Mui-checked": {
+            color: "var(--black)",
+          },
+          "& .MuiSvgIcon-root": {
+            fontSize: "var(--font-20)",
+          },
+        }}
+        {...props}
+      />
+    );
+  }
+
   return (
     <div className={styles.Wrapper}>
       <form className={styles.UpperWrapper}>{inputRequiredList}</form>
       <form className={styles.CheckBoxWrapperWrapper}>{checkboxesList}</form>
       <form className={styles.AddressWrapper}>
         <p className={styles.AddressPara}>Address : </p>
+
         <Select
           onChange={(e) => {
             console.log(e.target.value);
@@ -246,6 +276,39 @@ function SubscriptionPop({ chefData }) {
         >
           {selectList}
         </Select>
+        <RadioGroup
+          row
+          aria-label="Type"
+          value={values.isVeg ? "veg" : "non-veg"}
+          name="UserType"
+          className={styles.RadioWrapper}
+          onChange={(e) => {
+            setValues({ ...values, isVeg: e.target.value === "veg" });
+          }}
+        >
+          <FormControlLabel
+            value="veg"
+            control={<CustomisedRadio />}
+            label={
+              <Typography sx={{ fontSize: "var(--font-15)", fontWeight: 500 }}>
+                Veg
+              </Typography>
+            }
+          />
+          {!isVeg && (
+            <FormControlLabel
+              value="non-veg"
+              control={<CustomisedRadio />}
+              label={
+                <Typography
+                  sx={{ fontSize: "var(--font-15)", fontWeight: 500 }}
+                >
+                  Non-Veg
+                </Typography>
+              }
+            />
+          )}
+        </RadioGroup>
       </form>
       <div className={styles.SummaryWrapper}>
         <p className={styles.SummaryPara}>Summary</p>
@@ -257,7 +320,7 @@ function SubscriptionPop({ chefData }) {
         </div>
       </div>
       <Button
-        content={`Subscribe and Pay ₹${values.summaryTotal}`}
+        content={`Subscribe and Pay ₹${values.summaryTotal / values.days}`}
         mainColor="var(--green)"
         fontSize="var(--font-16)"
         wrapperClass={styles.Button}

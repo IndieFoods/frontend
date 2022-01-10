@@ -17,6 +17,8 @@ import {
   firebaseAuthSendOTP,
 } from "../../Services/signInUp.service";
 import { useDispatch, useSelector } from "react-redux";
+import { getUser } from './../../Services/user.service';
+import { getChefs } from "../../Services/chef.service";
 
 function SignIn() {
   const location = useLocation();
@@ -44,7 +46,27 @@ function SignIn() {
         details: userData.accessToken,
       });
       history.push("/home");
+      fetchUserData(userData.accessToken, userData.uid, dispatch);
     }
+  };
+
+  const fetchUserData = async (accessToken, uid, dispatch) => {
+    dispatch({
+      type: "UPDATE_ACCESS_TOKEN",
+      details: { accessToken, uid },
+    });
+
+    const userData = await getUser(accessToken);
+    const chefDetails = await getChefs();
+
+    dispatch({
+      type: "UPDATE_USER_DATA",
+      details: userData,
+    });
+    dispatch({
+      type: "UPDATE_CHEF_DATA",
+      details: chefDetails,
+    });
   };
 
   async function SignIn(e) {
@@ -52,7 +74,9 @@ function SignIn() {
     const mobile = e.target.elements.Mobile.value;
 
     if (mobile.length === 10) {
+      // loader start
       const confirmationResultRes = await firebaseAuthSendOTP(mobile, true);
+      // loader end
 
       dispatch({
         type: "UPDATE_AUTH_DATA",

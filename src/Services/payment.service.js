@@ -30,13 +30,7 @@ export const payementService = async (
 
     var rzp1 = new window.Razorpay(options);
     rzp1.on("payment.failed", function (response) {
-      notify(response.error.code, "error");
-      notify(response.error.description, "error");
-      notify(response.error.source, "error");
-      notify(response.error.step, "error");
-      notify(response.error.reason, "error");
-      notify(response.error.metadata.order_id, "error");
-      notify(response.error.metadata.payment_id, "error");
+      // Payment Error
     });
     rzp1.open();
   } catch (error) {

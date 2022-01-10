@@ -18,6 +18,7 @@ import { getChefs } from "./Services/chef.service";
 import PrivateRoute from "./Utils/helper/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Preloader from "./Components/Preloader/Preloader";
 
 const fetchUserData = async (accessToken, uid, dispatch) => {
   dispatch({
@@ -46,44 +47,77 @@ const App = () => {
   const dispatch = useDispatch();
   const auth = getAuth();
 
+  const [isDataBeingLoaded, setIsDataBeingLoaded] = React.useState(true);
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // console.log(user);
-        let currentPage = history.location.pathname.split("/")[1];
-        if (
-          (currentPage !== "home" &&
-            currentPage !== "profile" &&
-            currentPage !== "chef") ||
-          (userData.isChef && currentPage === "chef")
-        ) {
-          history.push("/home");
-        }
         fetchUserData(user.accessToken, user.uid, dispatch);
+        setIsDataBeingLoaded(false);
       } else {
         console.log("user is signed out");
-        history.push("/");
+        if (
+          location.pathname !== "/" &&
+          location.pathname !== "/signup" &&
+          location.pathname !== "/signin"
+        ) {
+          history.push("/");
+        }
+        setIsDataBeingLoaded(false);
       }
     });
   }, []);
 
+  useEffect(() => {
+    if (userData.name) {
+      let currentPage = history.location.pathname.split("/")[1];
+      if (
+        (currentPage !== "home" &&
+          currentPage !== "profile" &&
+          currentPage !== "chef") ||
+        (userData.isChef && currentPage === "chef")
+      ) {
+        history.push("/home");
+      }
+    } else {
+      if (
+        location.pathname !== "/" &&
+        location.pathname !== "/signup" &&
+        location.pathname !== "/signin"
+      ) {
+        history.push("/");
+      }
+    }
+  }, [history.location.pathname, userData.name]);
+
   return (
     <>
-      <ToastContainer bodyClassName="ToastBody" />
-      <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route path={["/signin", "/signup"]} component={LandingPage} />
-        <PrivateRoute path="/home" component={UserHome} ChefComp={ChefHome} />
-        <PrivateRoute
-          path="/profile"
-          component={UserProfile}
-          ChefComp={ChefProfile}
-        />
-        {userData.isChef && <Redirect to="/home" />}
-        <PrivateRoute path="/chef/:cid" component={FoodSubDetails} />
-        {userData.name && <Redirect to="/home" />}
-        <Redirect to="/" />
-      </Switch>
+      {isDataBeingLoaded ? (
+        <Preloader />
+      ) : (
+        <>
+          <ToastContainer bodyClassName="ToastBody" />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path={["/signin", "/signup"]} component={LandingPage} />
+            <PrivateRoute
+              path="/home"
+              component={UserHome}
+              ChefComp={ChefHome}
+            />
+            <PrivateRoute
+              path="/profile"
+              component={UserProfile}
+              ChefComp={ChefProfile}
+            />
+            {userData.isChef && <Redirect to="/home" />}
+            <PrivateRoute path="/chef/:cid" component={FoodSubDetails} />
+            {userData.name && <Redirect to="/home" />}
+            <Redirect to="/" />
+          </Switch>
+        </>
+      )}
     </>
   );
 };

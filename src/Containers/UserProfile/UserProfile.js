@@ -8,12 +8,12 @@ import About from "./../../Components/About";
 import { useSelector } from "react-redux";
 import { getOrdersOfAUser } from "../../Services/order.service";
 import notify from "../../Utils/helper/notifyToast";
+import Preloader from "./../../Components/Preloader/Preloader";
 
 function UserProfile() {
-
   const userData = useSelector((state) => state.userReducer.userData);
   const accessToken = useSelector((state) => state.userReducer.accessToken);
-  const [orders, setOrders] = React.useState([]);
+  const [orders, setOrders] = React.useState(null);
 
   async function fetchUserOrders() {
     try {
@@ -26,24 +26,32 @@ function UserProfile() {
   }
 
   useEffect(() => {
-    fetchUserOrders()
+    fetchUserOrders();
   }, [accessToken]);
 
   return (
-    <div className={Styles.Wrapper}>
-      <Navbar />
-      <div className={Styles.SubWrapper}>
-        <div className={Styles.SubListWrapper}>
-          <UserSubList
-            subData={orders}
-          />
+    <>
+      {userData && orders ? (
+        <div className={Styles.Wrapper}>
+          <Navbar />
+          <div className={Styles.SubWrapper}>
+            <div className={Styles.SubListWrapper}>
+              <UserSubList subData={orders} />
+            </div>
+            <div className={Styles.Line} />
+            <div className={Styles.AboutWraper}>
+              {userData.name ? (
+                <About userData={userData} isChef={false} />
+              ) : (
+                <About isChef={false} />
+              )}
+            </div>
+          </div>
         </div>
-        <div className={Styles.Line} />
-        <div className={Styles.AboutWraper}>
-          {userData.name ? <About userData={userData} isChef={false} /> : <About isChef={false} />}
-        </div>
-      </div>
-    </div>
+      ) : (
+        <Preloader />
+      )}
+    </>
   );
 }
 

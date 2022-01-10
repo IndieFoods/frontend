@@ -93,6 +93,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.RadioWrapper {
+  margin-top: 1.5rem;
+}
+
 @media only screen and (max-width: 780px) {
   .Wrapper {
     padding: 3rem 4rem;
