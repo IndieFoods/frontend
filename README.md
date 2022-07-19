@@ -1,7 +1,7 @@
 <div align="center">
   <h1>IndieFoods</h1>
   <p>
-    The Frontend Repository for the IndieFoods
+    The Frontend Repository for the 
     <a href="https://indie-foods.netlify.app">
     IndieFoods Website
   </a>
